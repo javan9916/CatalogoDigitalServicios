@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "CDS"
+    }
+  },
+  "defaultProject": "CDS",
+  "cli": {
+    "analytics": "d1710b44-00b7-401c-9de8-c7986458fefe"
+  }
 }

@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+    <span>Catálogo Digital de Servicios</span>
+</mat-toolbar>
+
+<div class="loginMain"> 
+    <mat-card>
+        <mat-card-title> Inicio de sesión </mat-card-title>
+        <mat-card-content>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <mat-form-field appearance="outline">
+                    <input matInput type="text" id="username" placeholder="Usuario" formControlName="username">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <input matInput type="password" id="password" placeholder="Contraseña" formControlName="password">
+                </mat-form-field>
+                <button mat-raised-button color="primary" type="submit">Iniciar sesión</button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
+

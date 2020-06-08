@@ -1,0 +1,36 @@
+.loginMain {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+mat-card {
+    text-align: center;
+    margin: auto;
+    width: 30%;
+    display: block;
+    margin-top: 20rem;
+}
+
+mat-form-field,
+input {
+    width: 100%;
+}
+
+button {
+    display: block;
+    width: 100%;
+}
+
+input {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 960px) { 
+    mat-card {
+        width: 90%;
+        margin-top: 110px;
+    }
+}

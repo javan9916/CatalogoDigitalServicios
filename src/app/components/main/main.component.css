@@ -1,8 +1,33 @@
+
+.toolbar {
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+}
+
+.item-container {
+  display: flex;
+  width: 1012px;
+}
+
+.title {
+  line-height: 36px;
+}
+
 .button {
     padding: 0 5px;
     font-size: 18px;
 }
-  
+
 .spacer {
     flex: 1 1 auto;
 }
+
+.container {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  height: 100%;
+  width: 100%;
+}
+

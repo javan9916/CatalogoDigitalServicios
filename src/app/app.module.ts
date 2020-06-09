@@ -13,13 +13,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import {ReactiveFormsModule} from '@angular/forms';
+import { RegionsComponent } from './components/regions/regions.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    LoginComponent
+    LoginComponent,
+    RegionsComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,8 @@ import { MatInputModule } from '@angular/material/input';
     MatIconModule,
     MatCardModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

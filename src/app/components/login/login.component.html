@@ -2,11 +2,11 @@
     <span>Catálogo Digital de Servicios</span>
 </mat-toolbar>
 
-<div class="loginMain"> 
+<div class="loginMain">
     <mat-card>
         <mat-card-title> Inicio de sesión </mat-card-title>
         <mat-card-content>
-            <form (ngSubmit)="onSubmit()">
+            <form [formGroup]="myForm">
                 <mat-form-field appearance="outline">
                     <input matInput type="text" id="username" placeholder="Usuario" formControlName="username">
                 </mat-form-field>

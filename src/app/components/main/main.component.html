@@ -1,5 +1,9 @@
 <mat-toolbar color="primary">
-    <span>Catálogo Digital de Servicios</span>
+    <a routerLink="/main">
+        <button mat-flat-button class="mainButton" color="primary" >
+            Catálogo Digital de Servicios
+        </button> 
+    </a>
     <span class="spacer"></span>
     <a routerLink="/login">
         <button mat-raised-button class="button" color="primary" style="margin-right: 6px;">
@@ -14,3 +18,67 @@
         </button> 
     </a>
 </mat-toolbar>
+
+<div class="main">
+    <mat-grid-list cols="4" rowHeight="350px">
+        <mat-grid-tile colspan="1" rowspan="1">
+            <mat-card style="background-image: url('/../assets/images/provinces/sj.jpg'); background-size: 100%;">
+                <mat-card-title>San José</mat-card-title>
+                <mat-card-content>
+                    <button mat-button>Seleccionar</button>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="1">
+            <mat-card style="background-image: url('/../assets/images/provinces/alajuela.jpg'); background-size: 100%;">
+                <mat-card-title>Alajuela</mat-card-title>
+                <mat-card-content>
+                    <button mat-button>Seleccionar</button>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="1">
+            <mat-card style="background-image: url('/../assets/images/provinces/cartago.jpg'); background-size: 100%;">
+                <mat-card-title>Cartago</mat-card-title>
+                <mat-card-content>
+                    <button mat-button>Seleccionar</button>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="1">
+            <mat-card style="background-image: url('/../assets/images/provinces/heredia.jpg'); background-size: 100%;">
+                <mat-card-title>Heredia</mat-card-title>
+                <mat-card-content>
+                    <button mat-button>Seleccionar</button>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="3" rowHeight="350px">
+        <mat-grid-tile colspan="1" rowspan="1">
+            <mat-card style="background-image: url('/../assets/images/provinces/guanacaste.jpg'); background-size: 100%;">
+                <mat-card-title>Guanacaste</mat-card-title>
+                <mat-card-content>
+                    <button mat-button>Seleccionar</button>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="1">
+            <mat-card style="background-image: url('/../assets/images/provinces/puntarenas.jpg'); background-size: 100%;">
+                <mat-card-title>Puntarenas</mat-card-title>
+                <mat-card-content>
+                    <button mat-button>Seleccionar</button>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" rowspan="1">
+            <mat-card style="background-image: url('/../assets/images/provinces/limon.jpg'); background-size: 100%;">
+                <mat-card-title>Limón</mat-card-title>
+                <mat-card-content>
+                    <button mat-button>Seleccionar</button>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

@@ -5,6 +5,10 @@
     align-items: center;
 }
 
+.mainButton {
+    font-size: 20px;
+}
+
 mat-card {
     text-align: center;
     margin: auto;

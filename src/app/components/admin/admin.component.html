@@ -1,0 +1,29 @@
+<mat-toolbar color="primary">
+    <a routerLink="/main">
+        <button mat-flat-button class="mainButton" color="primary" >
+            Catálogo Digital de Servicios
+        </button> 
+    </a>
+</mat-toolbar>
+
+<agm-map [latitude]="maplat" [longitude]="maplng" (mapClick)="onMapClicked($event)">
+    <agm-marker
+    [latitude]="markerlat" [longitude]="markerlng"
+    *ngIf="onChosen">
+    </agm-marker>
+    <agm-circle 
+    [latitude]="markerlat" [longitude]="markerlng"
+    *ngIf="onChosen" 
+    [radius]="circle"
+    (circleClick)="onMapClicked($event)"
+    fillColor="steelblue"
+    fillOpacity="0.5">
+    </agm-circle>
+</agm-map>
+
+<mat-form-field class="radiusInput">
+    <mat-label>Radio</mat-label>
+    <input matInput (keyup.enter)="onEnter()" type="number" [(ngModel)]="radius">
+</mat-form-field>
+
+

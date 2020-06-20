@@ -1,28 +1,32 @@
+
+.toolbar {
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+}
+
+.item-container {
+  display: flex;
+  width: 1012px;
+}
+
+.title {
+  line-height: 36px;
+}
+
 .button {
     padding: 0 5px;
     font-size: 16px;
 }
-  
+
 .spacer {
     flex: 1 1 auto;
 }
 
-.mainButton {
-    font-size: 20px;
-}
-
-mat-card {
-    width: 75%;
-    height: 200px;
-    text-align: center;
-}
-
-mat-card-title {
-    padding: 40px;
-    color: white;
-}
-
-mat-card-content {
-    margin: 30px;
-    color: white;
+.container {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  height: 100%;
+  width: 100%;
 }

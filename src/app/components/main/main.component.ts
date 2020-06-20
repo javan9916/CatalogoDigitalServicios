@@ -12,4 +12,8 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  isLoggedIn() {
+    return sessionStorage.getItem('loggedIn') === 'true';
+  }
+
 }

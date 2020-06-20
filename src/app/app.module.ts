@@ -16,8 +16,16 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { RegionsComponent } from './components/regions/regions.component';
+
+// Modules needed for GraphQL
+import { HttpClientModule } from '@angular/common/http';
+import {Apollo, ApolloModule} from 'apollo-angular';
+import {HttpLink, HttpLinkModule} from 'apollo-angular-link-http';
+import {InformationService} from './services/information.service';
+import {InMemoryCache} from 'apollo-cache-inmemory';
 
 @NgModule({
   declarations: [
@@ -40,8 +48,20 @@ import { RegionsComponent } from './components/regions/regions.component';
     MatFormFieldModule,
     MatInputModule,
     MatGridListModule,
+    MatSnackBarModule,
+    HttpClientModule,     // Necesario para poder usar HttpLinkModule
+    ApolloModule,         // Modulo principal de Apollo
+    HttpLinkModule,       // Necesario para obtener datos
   ],
-  providers: [],
+  providers: [InformationService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(public apollo: Apollo,
+              public httpLink: HttpLink) {
+    apollo.create({
+      link: httpLink.create({ uri: 'https://catalogo-servicio-digital.herokuapp.com'}),
+      cache: new InMemoryCache()
+    });
+  }
+}

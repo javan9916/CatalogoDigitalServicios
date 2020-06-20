@@ -3,11 +3,22 @@
     <span class="title">Catálogo Digital de Servicios</span>
     <span class="spacer"></span>
     <a routerLink="/login">
-      <button mat-flat-button class="button" color="primary">
-        <mat-icon>person</mat-icon>
-        Login
-      </button>
+      <ng-container *ngIf="!isLoggedIn()">
+        <button mat-flat-button class="button" color="primary">
+          <mat-icon>person</mat-icon>
+          Login
+        </button>
+      </ng-container>
     </a>
+
+    <ng-container *ngIf="!isLoggedIn()">
+      <a routerLink="/signup">
+        <button mat-flat-button class="button" color="primary">
+          <mat-icon>person_add</mat-icon>
+          Registro
+        </button>
+      </a>
+    </ng-container>
   </div>
 </mat-toolbar>
 

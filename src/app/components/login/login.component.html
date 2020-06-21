@@ -1,9 +1,7 @@
 <mat-toolbar color="primary">
-    <a routerLink="/main">
-        <button mat-flat-button class="mainButton" color="primary" >
-            Catálogo Digital de Servicios
-        </button>
-    </a>
+    <button mat-flat-button class="mainButton" color="primary" (click)="onHomeClick()">
+        Catálogo Digital de Servicios
+    </button>
 </mat-toolbar>
 
 <div class="loginMain">
@@ -19,7 +17,7 @@
                     <mat-label>Contraseña</mat-label>
                     <input matInput type="password" id="password" placeholder="Contraseña" formControlName="password">
                 </mat-form-field>
-                <button mat-raised-button color="primary" type="submit">Iniciar sesión</button>
+                <button mat-raised-button class="loginButton" color="primary" type="submit">Iniciar sesión</button>
             </form>
         </mat-card-content>
     </mat-card>

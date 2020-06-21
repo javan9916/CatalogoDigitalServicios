@@ -1,13 +1,5 @@
-
-.toolbar {
-  display: flex;
-  justify-items: center;
-  justify-content: center;
-}
-
-.item-container {
-  display: flex;
-  width: 1012px;
+.mainButton {
+  font-size: 20px;
 }
 
 .title {

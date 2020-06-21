@@ -1,6 +1,7 @@
 <mat-toolbar class="toolbar" color="primary">
-  <div class="item-container">
-    <span class="title">Catálogo Digital de Servicios</span>
+    <button mat-flat-button class="mainButton" color="primary" (click)="onHomeClick()">
+      Catálogo Digital de Servicios
+    </button>
     <span class="spacer"></span>
     <a routerLink="/login">
       <ng-container *ngIf="!isLoggedIn()">
@@ -10,7 +11,6 @@
         </button>
       </ng-container>
     </a>
-
     <ng-container *ngIf="!isLoggedIn()">
       <a routerLink="/signup">
         <button mat-flat-button class="button" color="primary">
@@ -19,10 +19,16 @@
         </button>
       </a>
     </ng-container>
-  </div>
+    <ng-container *ngIf="isLoggedIn()">
+      <a routerLink="/admin">
+        <button mat-flat-button class="button" color="primary">
+          <mat-icon>account_circle</mat-icon>
+          Admin
+        </button>
+      </a>
+    </ng-container>
 </mat-toolbar>
 
 <div class="container">
   <app-regions></app-regions>
 </div>
-

@@ -6,7 +6,7 @@ import { HttpLink } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import gql from 'graphql-tag';
 import { getLoginQuery } from '../../querys';
-import {InformationService} from '../../services/information.service';
+import { InformationService } from '../../services/information.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -29,9 +29,12 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     });
   }
+  
+  onHomeClick() {
+    this.router.navigateByUrl('/main');
+  }
 
   onSubmit() {
-
     if (this.loginForm.valid) {
       const email = this.loginForm.get('email').value;
       const password = this.loginForm.get('password').value;

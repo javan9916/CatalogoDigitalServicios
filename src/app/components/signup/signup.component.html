@@ -1,9 +1,7 @@
 <mat-toolbar color="primary">
-    <a routerLink="/main">
-        <button mat-flat-button class="mainButton" color="primary" >
-            Catálogo Digital de Servicios
-        </button>
-    </a>
+    <button mat-flat-button class="mainButton" color="primary" (click)="onHomeClick()">
+        Catálogo Digital de Servicios
+    </button>
 </mat-toolbar>
 
 <div class="signMain">
@@ -27,10 +25,6 @@
                     <mat-label>Teléfono</mat-label>
                     <input matInput type="tel" id="phone" placeholder="Teléfono" formControlName="phone">
                 </mat-form-field>
-<!--                <mat-form-field appearance="outline">-->
-<!--                    <mat-label>Dirección</mat-label>-->
-<!--                    <textarea matInput type="text" id="address" placeholder="Dirección" formControlName="address" required></textarea>-->
-<!--                </mat-form-field>-->
                 <mat-form-field appearance="outline">
                     <mat-label>Contraseña</mat-label>
                     <input matInput type="password" id="password" placeholder="Contraseña" formControlName="password" required>
@@ -39,7 +33,7 @@
                     <mat-label>Confirmar contraseña</mat-label>
                     <input matInput type="password" id="confirm" placeholder="Confirmar contraseña" formControlName="confirm" required>
                 </mat-form-field>
-                <button mat-raised-button color="primary" type="submit">Registrar</button>
+                <button mat-raised-button class="registerButton" color="primary" type="submit">Registrar</button>
             </form>
         </mat-card-content>
     </mat-card>

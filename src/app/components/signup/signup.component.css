@@ -22,7 +22,7 @@ input {
     width: 100%;
 }
 
-button {
+.registerButton {
     display: block;
     width: 100%;
 }

@@ -27,10 +27,13 @@ export class SignupComponent implements OnInit {
       name: ['', Validators.required],
       id: ['', Validators.required],
       phone: [''],
-      // address: ['', Validators.required],
       password: ['', Validators.required],
       confirm: ['', Validators.required]
     });
+  }
+
+  onHomeClick() {
+    this.router.navigateByUrl('/main');
   }
 
   onSubmit() {

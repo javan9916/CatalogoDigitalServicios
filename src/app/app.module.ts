@@ -1,12 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AgmCoreModule } from '@agm/core'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainComponent } from './components/main/main.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { RegionsComponent } from './components/regions/regions.component';
+import { AddRegionComponent } from './components/add-region/add-region.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -17,15 +21,17 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
-import { RegionsComponent } from './components/regions/regions.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 // Modules needed for GraphQL
 import { HttpClientModule } from '@angular/common/http';
-import {Apollo, ApolloModule} from 'apollo-angular';
-import {HttpLink, HttpLinkModule} from 'apollo-angular-link-http';
-import {InformationService} from './services/information.service';
-import {InMemoryCache} from 'apollo-cache-inmemory';
+import { Apollo, ApolloModule } from 'apollo-angular';
+import { HttpLink, HttpLinkModule } from 'apollo-angular-link-http';
+import { InformationService } from './services/information.service';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatListModule } from '@angular/material/list';
+
 
 @NgModule({
   declarations: [
@@ -34,6 +40,8 @@ import {InMemoryCache} from 'apollo-cache-inmemory';
     LoginComponent,
     RegionsComponent,
     SignupComponent,
+    AdminComponent,
+    AddRegionComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +49,9 @@ import {InMemoryCache} from 'apollo-cache-inmemory';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDLWrWE4G9kg3_O1quNgo3toVhJ7dTFEC8'
+    }),
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
@@ -49,9 +60,10 @@ import {InMemoryCache} from 'apollo-cache-inmemory';
     MatInputModule,
     MatGridListModule,
     MatSnackBarModule,
+    MatSidenavModule,
     HttpClientModule,     // Necesario para poder usar HttpLinkModule
     ApolloModule,         // Modulo principal de Apollo
-    HttpLinkModule,       // Necesario para obtener datos
+    HttpLinkModule, LayoutModule, MatListModule,       // Necesario para obtener datos
   ],
   providers: [InformationService],
   bootstrap: [AppComponent]

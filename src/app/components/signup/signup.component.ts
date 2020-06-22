@@ -58,8 +58,8 @@ export class SignupComponent implements OnInit {
     }).subscribe( (result: any) => {
       const response = result.data.registrarUsuario;
       if (response.code === 200) {
-        this.informationService.showMessage(response.message, 'success');
         this.router.navigate(['/login']);
+        this.informationService.showMessage(response.message, 'success');
       } else if (response.code === 400) {
         this.informationService.showMessage(response.message, 'warn');
       }

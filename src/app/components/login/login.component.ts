@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     });
   }
-  
+
   onHomeClick() {
     this.router.navigateByUrl('/main');
   }
@@ -48,8 +48,12 @@ export class LoginComponent implements OnInit {
     }).subscribe( (result: any) => {
       const response: ResponseUsuario = result.data.login;
       if (response.code === 200) {
+        if (response.data.tipo === 1) {
+          this.router.navigate(['/admin']);
+        } else {
+          this.router.navigate(['/main']);
+        }
         this.informationService.showMessage(response.message, 'success');
-        this.router.navigate(['/main']);
         sessionStorage.setItem('loggedIn', 'true');
       } else {
         this.informationService.showMessage(response.message, 'warn');

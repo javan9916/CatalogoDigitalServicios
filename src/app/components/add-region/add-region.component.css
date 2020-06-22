@@ -1,6 +1,27 @@
-.map {
-    height: 60%;
+mat-card-title {
+    padding: 10px;
+}
+
+mat-card {
+    height: 90%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+mat-card-content {
+    justify-content: center;
+}
+
+.map-container {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.map {
+    height: 500px;
+    width: 100%;
+    
 }
 
 .radiusInput {

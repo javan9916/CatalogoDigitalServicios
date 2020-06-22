@@ -7,7 +7,7 @@ export function getLoginQuery(correoUsuario: string, passwordUsuario: string) {
       code
       message
       data {
-        idUsuario
+        id_usuario
         tipo
         cedula
         nombre
@@ -25,7 +25,7 @@ export function getSignupQuery() {
       code
       message
       data {
-        idUsuario
+        id_usuario
         tipo
         cedula
         nombre

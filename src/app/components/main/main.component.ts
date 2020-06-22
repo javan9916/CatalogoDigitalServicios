@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import {InformationService} from '../../services/information.service';
 
 @Component({
   selector: 'app-main',
@@ -8,7 +9,8 @@ import { Router } from '@angular/router';
 })
 export class MainComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              private informationService: InformationService) { }
 
   ngOnInit(): void {
   }
@@ -19,6 +21,12 @@ export class MainComponent implements OnInit {
 
   isLoggedIn() {
     return sessionStorage.getItem('loggedIn') === 'true';
+  }
+
+  logout() {
+    this.informationService.showMessage('Se ha cerrado la sesión', 'success');
+    sessionStorage.removeItem('loggedIn');
+    this.router.navigate(['/login']);
   }
 
 }

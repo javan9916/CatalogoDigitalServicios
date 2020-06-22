@@ -7,6 +7,14 @@
     padding: 0px;
 }
 
+.spacer {
+  flex: 1 1 auto;
+}
+
+.name {
+  font-size: 16px;
+}
+
 .mainButton {
   font-size: 20px;
 }

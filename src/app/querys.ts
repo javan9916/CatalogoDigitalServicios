@@ -36,3 +36,20 @@ export function getSignupQuery() {
   }`;
 }
 
+export function getLocationQuery() {
+  return `mutation agregarLocalizacion($Input: InputLocalizacion!){
+    agregarLocalizacion(input: $Input) {
+      count
+      code
+      message
+      data {
+        nombre
+        x
+        y
+        radio
+        visible
+      }
+    }
+  }`;
+}
+

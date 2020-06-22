@@ -8,6 +8,7 @@ import gql from 'graphql-tag';
 import { getLoginQuery } from '../../querys';
 import { InformationService } from '../../services/information.service';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user/user.service'
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private apollo: Apollo,
               private informationService: InformationService,
-              private router: Router) {
+              private router: Router,
+              private userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -48,6 +50,7 @@ export class LoginComponent implements OnInit {
     }).subscribe( (result: any) => {
       const response: ResponseUsuario = result.data.login;
       if (response.code === 200) {
+        this.userService.currentUserSubject.next(response.data);
         if (response.data.tipo === 1) {
           this.router.navigate(['/admin']);
         } else {

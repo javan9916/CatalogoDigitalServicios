@@ -3,6 +3,12 @@
     <button mat-flat-button class="mainButton" color="primary" (click)="onHomeClick()">
       Catálogo Digital de Servicios
     </button>
+    <span class="spacer"></span>
+    <ng-container *ngIf="(isLoggedIn()) && (currentUser != null)">
+      <div class="name">
+        {{ currentUser.nombre }}
+      </div>
+    </ng-container>
   </mat-toolbar>
 
   <mat-sidenav-container class="sidenav-container">

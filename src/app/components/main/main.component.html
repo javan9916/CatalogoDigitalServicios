@@ -27,6 +27,12 @@
         </button>
       </a>
     </ng-container>
+    <ng-container *ngIf="isLoggedIn()">
+      <button mat-flat-button class="button" color="primary" (click)="logout()">
+        <mat-icon>input</mat-icon>
+        Salir
+      </button>
+    </ng-container>
 </mat-toolbar>
 
 <div class="container">

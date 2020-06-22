@@ -22,6 +22,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 // Modules needed for GraphQL
 import { HttpClientModule } from '@angular/common/http';
@@ -61,6 +62,7 @@ import { MatListModule } from '@angular/material/list';
     MatGridListModule,
     MatSnackBarModule,
     MatSidenavModule,
+    MatSlideToggleModule,
     HttpClientModule,     // Necesario para poder usar HttpLinkModule
     ApolloModule,         // Modulo principal de Apollo
     HttpLinkModule, LayoutModule, MatListModule,       // Necesario para obtener datos

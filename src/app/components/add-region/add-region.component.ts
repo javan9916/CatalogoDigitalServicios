@@ -1,11 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Apollo } from 'apollo-angular';
+import gql from 'graphql-tag';
+import { getLocationQuery } from '../../querys';
+
+import { InputLocalizacion } from '../../types/types'
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { InformationService } from '../../services/information.service';
+
 @Component({
   selector: 'app-add-region',
   templateUrl: './add-region.component.html',
   styleUrls: ['./add-region.component.css']
 })
 export class AddRegionComponent implements OnInit {
+  locationForm: FormGroup
+
   onChosen = false;
   maplat = 9.937236533452204;
   maplng = -84.09428348902404;
@@ -14,9 +24,16 @@ export class AddRegionComponent implements OnInit {
   circle: number = 0;
   radius: number;
   
-  constructor() { }
+  constructor(private formBuilder: FormBuilder, private apollo: Apollo,
+    private informationService: InformationService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    this.locationForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      radius: ['', Validators.required],
+      visible: ['', Validators.required],
+    });
+  }
 
   onMapClicked(event) {
     console.log(event);
@@ -25,7 +42,37 @@ export class AddRegionComponent implements OnInit {
     this.onChosen = true;
   }
 
-  onEnter() {
+  onSubmit() { 
+    if (this.locationForm.valid) {
+      const inputLocalizacion: InputLocalizacion = {
+        nombre: this.locationForm.get('name').value,
+        x: this.markerlat,
+        y: this.markerlng,
+        radio: (this.locationForm.get('radius').value / 111000),
+        visible: this.locationForm.get('visible').value,
+      };
+      console.log(inputLocalizacion);
+      this.create(inputLocalizacion);
+    }
+  }
+
+  public create = (inputLocalizacion: InputLocalizacion) => {
+    this.apollo.mutate({
+        mutation: gql `${getLocationQuery()}`,
+      variables: {Input: inputLocalizacion}
+    }).subscribe( (result: any) => {
+      const response = result.data.agregarLocalizacion;
+      if (response.code === 200) {
+        this.informationService.showMessage(response.message, 'success');
+      } else if (response.code === 400) {
+        this.informationService.showMessage(response.message, 'warn');
+      }
+    }, error => {
+      this.informationService.showMessage('Error message', 'error');
+    });
+  }
+
+  onKeyup() {
     if (this.onChosen) {
       this.circle = this.radius; 
     }

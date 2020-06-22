@@ -2,22 +2,31 @@
     <mat-card-title>Crear mapa</mat-card-title>
 
     <mat-card-content>
-        <mat-form-field class="radiusInput">
-            <mat-label>Radio</mat-label>
-            <input matInput (keyup.enter)="onEnter()" type="number" [(ngModel)]="radius">
-        </mat-form-field>
+        <form [formGroup]="locationForm" (ngSubmit)="onSubmit()">
+            <mat-form-field>
+                <mat-label>Nombre</mat-label>
+                <input type="text" matInput id="name" formControlName="name" placeholder="Nombre">
+            </mat-form-field>
+            <mat-form-field class="radiusInput">
+                <mat-label>Radio</mat-label>
+                <input matInput (keyup.enter)="onKeyup()" type="number" id="radius" formControlName="radius" placeholder="Radio">
+            </mat-form-field>
+            <mat-slide-toggle formControlName="visible">Visible</mat-slide-toggle>
+            <div class="map-container">
+                <agm-map class="map" [latitude]="maplat" [longitude]="maplng" (mapClick)="onMapClicked($event)">
+                    <agm-marker [latitude]="markerlat" [longitude]="markerlng" *ngIf="onChosen"></agm-marker>
+                
+                    <agm-circle [latitude]="markerlat" [longitude]="markerlng" *ngIf="onChosen" [radius]="circle"
+                        (circleClick)="onMapClicked($event)" fillColor="steelblue" fillOpacity="0.5">
+                    </agm-circle>
+                </agm-map>
+            </div>
 
-        <div class="map-container">
-            <agm-map class="map" [latitude]="maplat" [longitude]="maplng" (mapClick)="onMapClicked($event)">
-                <agm-marker [latitude]="markerlat" [longitude]="markerlng" *ngIf="onChosen">
-                </agm-marker>
+            <div class="button-container">
+                <button mat-raised-button color="primary" class="submit-button" type="submit">Crear localización</button>
+            </div>
             
-                <agm-circle [latitude]="markerlat" [longitude]="markerlng" *ngIf="onChosen" [radius]="circle"
-                    (circleClick)="onMapClicked($event)" fillColor="steelblue" fillOpacity="0.5">
-                </agm-circle>
-            </agm-map>
-        </div>
-        
+        </form>
     </mat-card-content>
 </mat-card>
 

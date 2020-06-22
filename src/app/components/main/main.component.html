@@ -20,7 +20,7 @@
       </a>
     </ng-container>
     <ng-container *ngIf="(isLoggedIn()) && (currentUser != null) && (getUserType() == 1)">
-      <a routerLink="/admin">
+      <a routerLink="/admin/add_regions">
         <button mat-flat-button class="button" color="primary">
           <mat-icon>account_circle</mat-icon>
           {{ currentUser.nombre }}

@@ -40,15 +40,14 @@ export function getLocationQuery() {
   return `mutation agregarLocalizacion($Input: InputLocalizacion!){
     agregarLocalizacion(input: $Input) {
       count
-      code
-      message
       data {
+        id_localizacion
         nombre
-        x
-        y
-        radio
+        geofence
         visible
       }
+      code
+      message
     }
   }`;
 }

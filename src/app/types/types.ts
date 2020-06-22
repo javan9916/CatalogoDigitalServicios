@@ -25,3 +25,28 @@ export type InputUsuario = {
   'correo': string;
   'contra': string;
 };
+
+export type Localizacion = {
+  'idLocalizacion': number,
+  'nombre': string,
+  'geofence': string,
+  'visible': boolean
+};
+
+export type ResponseLocalizacion = {
+  'count': number;
+  'data': Localizacion;
+  'code': number;
+  'message': string;
+};
+
+
+export type InputLocalizacion = {
+  'nombre': string,
+  'x': number,
+  'y': number,
+  'radio': number,
+  'visible': boolean
+}
+
+

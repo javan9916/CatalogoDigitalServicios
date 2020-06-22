@@ -13,6 +13,15 @@ mat-card-content {
     justify-content: center;
 }
 
+.button-container {
+    text-align: center;
+}
+
+.submit-button {
+    margin: 20px;
+    width: 90%;
+}
+
 .map-container {
     margin-left: 2%;
     margin-right: 2%;

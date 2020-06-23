@@ -52,3 +52,19 @@ export function getLocationQuery() {
   }`;
 }
 
+export function getLocationsQuery(quantity: number, offset: number) {
+  return `query localizaciones{
+    localizaciones(filterword: null value: null quantity: ${quantity} offset: ${offset}){
+      count
+      data{
+        id_localizacion
+        nombre
+        geofence
+        visible
+      }
+      code
+      message
+    }
+  }`;
+}
+

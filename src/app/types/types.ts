@@ -40,7 +40,6 @@ export type ResponseLocalizacion = {
   'message': string;
 };
 
-
 export type InputLocalizacion = {
   'nombre': string,
   'x': number,

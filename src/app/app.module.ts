@@ -24,6 +24,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
 
 // Modules needed for GraphQL
 import { HttpClientModule } from '@angular/common/http';
@@ -69,6 +71,8 @@ import { CrudLocationComponent } from './components/crud-location/crud-location.
     MatSidenavModule,
     MatSlideToggleModule,
     MatTabsModule,
+    MatPaginatorModule,
+    MatTableModule,
     HttpClientModule,     // Necesario para poder usar HttpLinkModule
     ApolloModule,         // Modulo principal de Apollo
     HttpLinkModule, LayoutModule, MatListModule,       // Necesario para obtener datos

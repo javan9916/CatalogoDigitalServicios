@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-crud-location',
@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CrudLocationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cdRef:ChangeDetectorRef) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  ngAfterViewChecked() {
+    this.cdRef.detectChanges();
   }
 
 }

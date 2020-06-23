@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
       if (response.code === 200) {
         this.userService.currentUserSubject.next(response.data);
         if (response.data.tipo === 1) {
-          this.router.navigate(['/admin']);
+          this.router.navigate(['/admin/crud_location']);
         } else {
           this.router.navigate(['/main']);
         }

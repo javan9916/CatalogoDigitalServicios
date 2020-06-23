@@ -46,6 +46,5 @@ export type InputLocalizacion = {
   'y': number,
   'radio': number,
   'visible': boolean
-}
-
+};
 

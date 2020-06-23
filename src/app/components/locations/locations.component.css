@@ -96,4 +96,8 @@
   border-radius: 10px;
 }
 
+.loading {
+  width: 100px;
+  height: auto;
+}
 

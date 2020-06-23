@@ -16,25 +16,12 @@
     <h3>Selecciona una región para empezar</h3>
 
     <div class="region-container">
-      <div class="region" (click)="print()">
-        <mat-icon class="icon">place</mat-icon>
-        San Carlos
+      <div *ngIf="loading">
+        <img class="loading" src="assets/images/loader.gif" alt="">
       </div>
-      <div class="region" (click)="print()">
+      <div class="region" *ngFor="let location of locationData" (click)="onClick(location)">
         <mat-icon class="icon">place</mat-icon>
-        San Carlos
-      </div>
-      <div class="region" (click)="print()">
-        <mat-icon class="icon">place</mat-icon>
-        San Carlos
-      </div>
-      <div class="region" (click)="print()">
-        <mat-icon class="icon">place</mat-icon>
-        San Carlos
-      </div>
-      <div class="region" (click)="print()">
-        <mat-icon class="icon">place</mat-icon>
-        San Carlos
+        {{location.nombre}}
       </div>
     </div>
 

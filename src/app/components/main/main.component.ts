@@ -15,9 +15,9 @@ export class MainComponent implements OnInit {
 
   constructor(private router: Router,
               private informationService: InformationService,
-              private userService: UserService) { 
-                this.currentUser = this.userService.currentUserValue;
-              }
+              private userService: UserService) {
+    this.currentUser = this.userService.currentUserValue;
+  }
 
   ngOnInit(): void {
     console.log(this.currentUser);

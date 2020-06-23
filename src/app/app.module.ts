@@ -37,6 +37,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatListModule } from '@angular/material/list';
 import { UpdateLocationComponent } from './components/crud-location/update-location/update-location.component';
 import { CrudLocationComponent } from './components/crud-location/crud-location.component';
+import { LocationComponent } from './components/location/location.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { CrudLocationComponent } from './components/crud-location/crud-location.
     AdminComponent,
     CreateLocationComponent,
     UpdateLocationComponent,
-    CrudLocationComponent
+    CrudLocationComponent,
+    LocationComponent
   ],
   imports: [
     BrowserModule,

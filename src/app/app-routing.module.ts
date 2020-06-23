@@ -6,10 +6,16 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { CrudLocationComponent } from './components/crud-location/crud-location.component';
+import {LocationsComponent} from './components/locations/locations.component';
+import {LocationComponent} from './components/location/location.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
-  { path: 'main', component: MainComponent },
+  { path: 'main', component: MainComponent, children: [
+      { path: '', redirectTo: 'locations', pathMatch: 'full' },
+      { path: 'locations', component: LocationsComponent },
+      { path: 'location', component: LocationComponent }
+    ] },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'admin', component: AdminComponent, children: [

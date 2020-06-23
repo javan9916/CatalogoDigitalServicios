@@ -2,18 +2,18 @@ import { Component, OnInit } from '@angular/core';
 
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
-import { getLocationQuery } from '../../querys';
+import { getLocationQuery } from '../../../querys';
 
-import { InputLocalizacion } from '../../types/types'
+import { InputLocalizacion } from '../../../types/types'
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { InformationService } from '../../services/information.service';
+import { InformationService } from '../../../services/information.service';
 
 @Component({
-  selector: 'app-add-region',
-  templateUrl: './add-region.component.html',
-  styleUrls: ['./add-region.component.css']
+  selector: 'app-create-location',
+  templateUrl: './create-location.component.html',
+  styleUrls: ['./create-location.component.css']
 })
-export class AddRegionComponent implements OnInit {
+export class CreateLocationComponent implements OnInit {
   locationForm: FormGroup
 
   onChosen = false;
@@ -30,7 +30,6 @@ export class AddRegionComponent implements OnInit {
   ngOnInit(): void { 
     this.locationForm = this.formBuilder.group({
       name: ['', Validators.required],
-      radius: ['', Validators.required],
       visible: ['', Validators.required],
     });
   }
@@ -48,7 +47,7 @@ export class AddRegionComponent implements OnInit {
         nombre: this.locationForm.get('name').value,
         x: this.markerlat,
         y: this.markerlng,
-        radio: (this.locationForm.get('radius').value / 111000),
+        radio: (this.circle / 111000),
         visible: this.locationForm.get('visible').value,
       };
       console.log(inputLocalizacion);

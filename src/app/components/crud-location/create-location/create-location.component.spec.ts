@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddRegionComponent } from './add-region.component';
+import { CreateLocationComponent } from './create-location.component';
 
 describe('AddRegionComponent', () => {
-  let component: AddRegionComponent;
-  let fixture: ComponentFixture<AddRegionComponent>;
+  let component: CreateLocationComponent;
+  let fixture: ComponentFixture<CreateLocationComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddRegionComponent ]
+      declarations: [ CreateLocationComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddRegionComponent);
+    fixture = TestBed.createComponent(CreateLocationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

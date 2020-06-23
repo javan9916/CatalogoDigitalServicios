@@ -9,8 +9,8 @@ import { MainComponent } from './components/main/main.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { AdminComponent } from './components/admin/admin.component';
-import { RegionsComponent } from './components/regions/regions.component';
-import { AddRegionComponent } from './components/add-region/add-region.component';
+import { LocationsComponent } from './components/locations/locations.component';
+import { CreateLocationComponent } from './components/crud-location/create-location/create-location.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -23,6 +23,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatTabsModule } from '@angular/material/tabs';
 
 // Modules needed for GraphQL
 import { HttpClientModule } from '@angular/common/http';
@@ -32,6 +33,8 @@ import { InformationService } from './services/information.service';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatListModule } from '@angular/material/list';
+import { UpdateLocationComponent } from './components/crud-location/update-location/update-location.component';
+import { CrudLocationComponent } from './components/crud-location/crud-location.component';
 
 
 @NgModule({
@@ -39,10 +42,12 @@ import { MatListModule } from '@angular/material/list';
     AppComponent,
     MainComponent,
     LoginComponent,
-    RegionsComponent,
+    LocationsComponent,
     SignupComponent,
     AdminComponent,
-    AddRegionComponent
+    CreateLocationComponent,
+    UpdateLocationComponent,
+    CrudLocationComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +68,7 @@ import { MatListModule } from '@angular/material/list';
     MatSnackBarModule,
     MatSidenavModule,
     MatSlideToggleModule,
+    MatTabsModule,
     HttpClientModule,     // Necesario para poder usar HttpLinkModule
     ApolloModule,         // Modulo principal de Apollo
     HttpLinkModule, LayoutModule, MatListModule,       // Necesario para obtener datos

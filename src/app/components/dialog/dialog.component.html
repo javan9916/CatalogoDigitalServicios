@@ -1,0 +1,31 @@
+<h3 mat-dialog-title> <strong>{{ action }}</strong> </h3>
+<div mat-dialog-content [formGroup]="locationForm">
+    <div *ngIf="action == 'Eliminar'">
+        <p>¿Seguro que quiere eliminar <b>{{ locationName }}</b>?</p>
+    </div>
+    <div *ngIf="action == 'Editar'">
+        <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input type="text" matInput placeholder="Nombre" formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field class="radiusInput">
+            <mat-label>Radio</mat-label>
+            <input matInput (keyup)="onKeyup()" [(ngModel)]="locationRadius" formControlName="radius" type="number" placeholder="Radio">
+        </mat-form-field>
+
+        <mat-slide-toggle formControlName="visible" color="primary">Visible</mat-slide-toggle>
+
+        <agm-map class="map" [latitude]="locationLat" [longitude]="locationLng" (mapClick)="onMapClicked($event)">
+            <agm-marker [latitude]="locationMarkerLat" [longitude]="locationMarkerLng"></agm-marker>
+
+            <agm-circle [latitude]="locationMarkerLat" [longitude]="locationMarkerLng" [radius]="locationCircle"
+                (circleClick)="onMapClicked($event)" fillColor="steelblue" fillOpacity="0.5">
+            </agm-circle>
+        </agm-map>
+    </div>
+</div>
+<div class="mat-dialog-actions" *ngIf="action != 'Ayuda'">
+    <button mat-button mat-flat-button class="add-button" (click)="save()">Sí</button>
+    <button mat-button mat-flat-button class="cancel-button" (click)="close()" color="warn">Cancelar</button>
+</div>

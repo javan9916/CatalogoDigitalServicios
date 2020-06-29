@@ -45,6 +45,9 @@ export function getLocationQuery() {
         nombre
         geofence
         visible
+        latitud
+        longitud
+        radio
       }
       code
       message
@@ -61,6 +64,9 @@ export function getLocationsQuery(quantity: number, offset: number) {
         nombre
         geofence
         visible
+        latitud
+        longitud
+        radio
       }
       code
       message
@@ -68,3 +74,37 @@ export function getLocationsQuery(quantity: number, offset: number) {
   }`;
 }
 
+export function deleteLocationQuery(id: number) {
+  return `mutation eliminarLocalizacion{
+    eliminarLocalizacion(id_localizacion: ${id}){
+      count
+      code
+      message
+      data{
+        id_localizacion
+        nombre
+        geofence
+        visible
+      }
+    }
+  }`;
+}
+
+export function updateLocationQuery() {
+  return `mutation modificarLocalizacion($Input: InputUpdateLocalizacion!){
+    modificarLocalizacion(input: $Input){
+      count
+      code
+      message
+      data{
+        id_localizacion
+        nombre
+        geofence
+        visible
+        latitud
+        longitud
+        radio
+      }
+    }
+  }`;
+}

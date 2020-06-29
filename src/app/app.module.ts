@@ -26,6 +26,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
 
 // Modules needed for GraphQL
 import { HttpClientModule } from '@angular/common/http';
@@ -38,6 +39,7 @@ import { MatListModule } from '@angular/material/list';
 import { UpdateLocationComponent } from './components/crud-location/update-location/update-location.component';
 import { CrudLocationComponent } from './components/crud-location/crud-location.component';
 import { LocationComponent } from './components/location/location.component';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 
 @NgModule({
@@ -51,7 +53,8 @@ import { LocationComponent } from './components/location/location.component';
     CreateLocationComponent,
     UpdateLocationComponent,
     CrudLocationComponent,
-    LocationComponent
+    LocationComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -74,6 +77,7 @@ import { LocationComponent } from './components/location/location.component';
     MatSlideToggleModule,
     MatTabsModule,
     MatPaginatorModule,
+    MatDialogModule,
     MatTableModule,
     HttpClientModule,     // Necesario para poder usar HttpLinkModule
     ApolloModule,         // Modulo principal de Apollo

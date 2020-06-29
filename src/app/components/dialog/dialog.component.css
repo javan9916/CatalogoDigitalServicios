@@ -1,0 +1,23 @@
+.cancel-button{
+    color:#d9534f;
+    color: white;
+    margin: 10px;
+}
+
+.add-button {
+    background-color: #4CAF50;
+    color:white;
+}
+
+.mat-dialog-actions {
+    justify-content: flex-end;
+}
+
+.map {
+    height: 500px;
+    width: 100%;  
+}
+
+.radiusInput {
+    padding: 20px;
+}

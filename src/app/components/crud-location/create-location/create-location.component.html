@@ -1,4 +1,4 @@
-<form [formGroup]="locationForm" (ngSubmit)="onSubmit()" (keyup.enter)="$event.preventDefault()">
+<form [formGroup]="locationForm" (ngSubmit)="onSubmit()">
     <div class="input-container">
         <mat-form-field>
             <mat-label>Nombre</mat-label>
@@ -6,7 +6,7 @@
         </mat-form-field>
         <mat-form-field class="radiusInput">
             <mat-label>Radio</mat-label>
-            <input matInput (keyup.enter)="onKeyup()" [(ngModel)]="radius" type="number" placeholder="Radio"
+            <input matInput (keyup)="onKeyup()" [(ngModel)]="radius" type="number" placeholder="Radio"
                 [ngModelOptions]="{standalone: true}">
         </mat-form-field>
         <mat-slide-toggle formControlName="visible" color="primary">Visible</mat-slide-toggle>

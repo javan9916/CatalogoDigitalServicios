@@ -30,7 +30,10 @@ export type Localizacion = {
   'idLocalizacion': number,
   'nombre': string,
   'geofence': string,
-  'visible': boolean
+  'visible': boolean,
+  'latitud ': number,
+  'longitud': number,
+  'radio': number
 };
 
 export type ResponseLocalizacion = {
@@ -42,8 +45,17 @@ export type ResponseLocalizacion = {
 
 export type InputLocalizacion = {
   'nombre': string,
-  'x': number,
-  'y': number,
+  'latitud': number,
+  'longitud': number,
+  'radio': number,
+  'visible': boolean
+};
+
+export type InputUpdateLocalizacion = {
+  'id_localizacion': number,
+  'nombre': string,
+  'latitud': number,
+  'longitud': number,
   'radio': number,
   'visible': boolean
 };

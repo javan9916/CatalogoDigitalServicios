@@ -45,8 +45,8 @@ export class CreateLocationComponent implements OnInit {
     if (this.locationForm.valid) {
       const inputLocalizacion: InputLocalizacion = {
         nombre: this.locationForm.get('name').value,
-        x: this.markerlat,
-        y: this.markerlng,
+        latitud: this.markerlat,
+        longitud: this.markerlng,
         radio: (this.circle / 111000),
         visible: this.locationForm.get('visible').value,
       };

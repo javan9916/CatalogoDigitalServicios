@@ -135,6 +135,7 @@ export class UpdateLocationComponent implements OnInit {
       variables: {Input: inputUpdateLocalizacion}
     }).subscribe((result: any) => {
       const response = result.data;
+      console.log(response);
       if (response.code === 200) {
         this.getLocations(this.pageSize, this.pageIndex);
         this.informationService.showMessage(response.message, 'success');

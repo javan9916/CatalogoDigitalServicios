@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Inject } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
@@ -20,6 +20,7 @@ export class DialogComponent implements OnInit {
   locationMarkerLng: number;
   locationRadius: number;
   locationCircle: number;
+  marker: any;
   
   action: string;
   index: number;
@@ -59,9 +60,10 @@ export class DialogComponent implements OnInit {
         id: [this.locationId],
         name: [this.locationName],
         visible: [this.locationVisible],
-        lat: [this.locationMarkerLat],
-        lng: [this.locationMarkerLng],
+        lat: [this.locationLat],
+        lng: [this.locationLng],
         radius: [this.locationCircle],
+        marker: [this.marker],
         action: [this.action],
       })
     }
@@ -78,6 +80,8 @@ export class DialogComponent implements OnInit {
   }
 
   save() {
+    this.locationForm.controls['lat'].setValue(this.locationMarkerLat);
+    this.locationForm.controls['lng'].setValue(this.locationMarkerLng);
     this.dialogRef.close(this.locationForm.value);
   }
 

@@ -31,7 +31,7 @@ export type Localizacion = {
   'nombre': string,
   'geofence': string,
   'visible': boolean,
-  'latitud ': number,
+  'latitud': number,
   'longitud': number,
   'radio': number
 };
@@ -110,6 +110,20 @@ export type ServiceRequest = {
 export type ResponseServiceRequest = {
   'count': number;
   'data': ServiceRequest;
+  'code': number;
+  'message': string;
+}
+
+export type DeleteServiceRequest = {
+  'id_solicitud_eliminacion': number;
+  'solicitud': Request;
+  'servicio': ServiceRequest;
+  'justificacion': string;
+};
+
+export type ResponseDeleteServiceRequest = {
+  'count': number;
+  'data': DeleteServiceRequest;
   'code': number;
   'message': string;
 }

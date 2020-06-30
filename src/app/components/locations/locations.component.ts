@@ -3,7 +3,7 @@ import {Apollo} from 'apollo-angular';
 import {InformationService} from '../../services/information.service';
 import {getLocationsQuery} from '../../querys';
 import gql from 'graphql-tag';
-import {Localizacion, ResponseLocalizacion} from '../../types/types';
+import { ResponseLocalizacion } from '../../types/types';
 import {Router} from '@angular/router';
 
 @Component({

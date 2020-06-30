@@ -8,4 +8,7 @@
     <mat-tab label="Etiquetas"> 
         <app-tag-request *ngIf="tabGroup.selectedIndex === 2"></app-tag-request>
     </mat-tab>
+    <mat-tab label="Eliminación de Servicios">
+        <app-delete-service-request *ngIf="tabGroup.selectedIndex === 3"></app-delete-service-request>
+    </mat-tab>
 </mat-tab-group>

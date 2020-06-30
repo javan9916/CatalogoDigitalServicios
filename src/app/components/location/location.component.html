@@ -1,14 +1,18 @@
 <div class="container">
 
   <div class="map-container">
-    <agm-map class="map" [latitude]="maplat" [longitude]="maplng" >
+    <agm-map class="map" [latitude]="maplat" [longitude]="maplng">
+      <agm-marker [latitude]="markerlat" [longitude]="markerlng"></agm-marker>
 
+      <agm-circle [latitude]="markerlat" [longitude]="markerlng"
+      [radius]="radius" fillColor="steelblue" fillOpacity="0.5">
+      </agm-circle>
     </agm-map>
   </div>
 
   <div class="flex-centered">
 
-    <h3>Servicios en la localización de {{  locationName  }}</h3>
+    <h3>Servicios en {{  locationName  }}</h3>
 
   </div>
 

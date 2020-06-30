@@ -1,0 +1,33 @@
+<mat-table [dataSource]="dataSource" #mytable>
+
+    <!--  Columna id -->
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+        <mat-cell *matCellDef="let request">
+            {{request.id_solicitud_eliminacion}} </mat-cell>
+    </ng-container>
+
+    <!-- Columna etiqueta -->
+    <ng-container matColumnDef="justificacion">
+        <mat-header-cell *matHeaderCellDef> Justificación </mat-header-cell>
+        <mat-cell *matCellDef="let request">
+            {{request.justificacion}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let row, let i = index" class="actions-col">
+            <button mat-button matTooltip="Aceptar esta solicitud" color="primary" >
+                <mat-icon>done</mat-icon>
+            </button>
+            <button mat-button matTooltip="Denegar esta solicitud" class="delete-button" >
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns;"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+<mat-paginator class="mat-paginator" length={{dataLength}} [pageSizeOptions]="[5, 10, 15, 20]"
+    (page)="onPageChanged($event)"></mat-paginator>

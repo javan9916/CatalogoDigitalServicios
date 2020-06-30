@@ -197,3 +197,34 @@ export function getServiceRequestsQuery(quantity: number, offset: number) {
     }
   }`;
 }
+
+export function getDeleteServiceRequestsQuery(quantity: number, offset: number) {
+  return `query solicitudesEliminacionServicio{
+    solicitudesEliminacionServicio(quantity: ${quantity} offset: ${offset}){
+      count
+      data{
+        id_solicitud_eliminacion
+        solicitud{
+          id_solicitud
+          admin{
+            id_usuario
+            nombre
+          }
+          solicitante{
+            id_usuario
+            nombre
+          }
+          estado
+          fecha_solicitud
+          fecha_decision
+        }
+        servicio {
+          id_servicio
+        }
+        justificacion
+      }
+      code
+      message
+    }
+  }`;
+}

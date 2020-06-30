@@ -44,6 +44,7 @@ import { RequestsComponent } from './components/requests/requests.component';
 import { SupplierRequestComponent } from './components/requests/supplier-request/supplier-request.component';
 import { TagRequestComponent } from './components/requests/tag-request/tag-request.component';
 import { ServiceRequestComponent } from './components/requests/service-request/service-request.component';
+import { DeleteServiceRequestComponent } from './components/requests/delete-service-request/delete-service-request.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { ServiceRequestComponent } from './components/requests/service-request/s
     RequestsComponent,
     SupplierRequestComponent,
     TagRequestComponent,
-    ServiceRequestComponent
+    ServiceRequestComponent,
+    DeleteServiceRequestComponent
   ],
   imports: [
     BrowserModule,

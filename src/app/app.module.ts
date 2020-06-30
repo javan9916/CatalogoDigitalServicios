@@ -40,6 +40,10 @@ import { UpdateLocationComponent } from './components/crud-location/update-locat
 import { CrudLocationComponent } from './components/crud-location/crud-location.component';
 import { LocationComponent } from './components/location/location.component';
 import { DialogComponent } from './components/dialog/dialog.component';
+import { RequestsComponent } from './components/requests/requests.component';
+import { SupplierRequestComponent } from './components/requests/supplier-request/supplier-request.component';
+import { TagRequestComponent } from './components/requests/tag-request/tag-request.component';
+import { ServiceRequestComponent } from './components/requests/service-request/service-request.component';
 
 
 @NgModule({
@@ -54,7 +58,11 @@ import { DialogComponent } from './components/dialog/dialog.component';
     UpdateLocationComponent,
     CrudLocationComponent,
     LocationComponent,
-    DialogComponent
+    DialogComponent,
+    RequestsComponent,
+    SupplierRequestComponent,
+    TagRequestComponent,
+    ServiceRequestComponent
   ],
   imports: [
     BrowserModule,

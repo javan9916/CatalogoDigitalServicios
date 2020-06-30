@@ -7,7 +7,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 })
 export class CrudLocationComponent implements OnInit {
 
-  constructor(private cdRef:ChangeDetectorRef) { }
+  constructor(private cdRef: ChangeDetectorRef) { }
 
   ngOnInit(): void { }
 

@@ -1,0 +1,11 @@
+<mat-tab-group mat-align-tabs="center" #tabGroup>
+    <mat-tab label="Servicios" > 
+        <app-service-request *ngIf="tabGroup.selectedIndex === 0"></app-service-request>
+    </mat-tab>
+    <mat-tab label="Proveedores"> 
+        <app-supplier-request *ngIf="tabGroup.selectedIndex === 1"></app-supplier-request>
+    </mat-tab>
+    <mat-tab label="Etiquetas"> 
+        <app-tag-request *ngIf="tabGroup.selectedIndex === 2"></app-tag-request>
+    </mat-tab>
+</mat-tab-group>

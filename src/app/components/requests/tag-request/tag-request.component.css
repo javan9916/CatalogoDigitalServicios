@@ -1,0 +1,8 @@
+.delete-button {
+    color:#d9534f;
+}
+
+.actions-col {
+    text-align: right !important;
+    justify-content: flex-end !important;
+}

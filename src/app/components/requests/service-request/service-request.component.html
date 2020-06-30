@@ -1,27 +1,27 @@
 <mat-table [dataSource]="dataSource" #mytable>
 
-    <!--  Columna id -->
+    <!-- Columna id -->
     <ng-container matColumnDef="id">
         <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
-        <mat-cell *matCellDef="let location">
-            {{location.id_localizacion}} </mat-cell>
+        <mat-cell *matCellDef="let request">
+            {{request.id_solicitud_servicio}} </mat-cell>
     </ng-container>
 
     <!-- Columna nombre -->
     <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
-        <mat-cell *matCellDef="let location">
-            {{location.nombre}} </mat-cell>
+        <mat-cell *matCellDef="let request">
+            {{request.nombre}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="action">
         <mat-header-cell *matHeaderCellDef></mat-header-cell>
         <mat-cell *matCellDef="let row, let i = index" class="actions-col">
-            <button mat-button matTooltip="Editar esta localización" color="primary" (click)="openDialog(row, 'Editar', i)">
-                <mat-icon>create</mat-icon>
+            <button mat-button matTooltip="Aceptar esta solicitud" color="primary" >
+                <mat-icon>done</mat-icon>
             </button>
-            <button mat-button matTooltip="Eliminar localización" class="delete-button" (click)="openDialog(row, 'Eliminar', i)">
-                <mat-icon>delete</mat-icon>
+            <button mat-button matTooltip="Denegar esta solicitud" class="delete-button" >
+                <mat-icon>close</mat-icon>
             </button>
         </mat-cell>
     </ng-container>

@@ -1,0 +1,55 @@
+<div class="flex-container">
+  <span class="spacer"></span>
+
+  <button class="btn-request" mat-raised-button color="primary" (click)="openNewTagComponent()">
+    Solicitud Nueva Etiqueta
+  </button>
+
+  <button class="btn-request" mat-raised-button color="primary" (click)="openNewServiceComponent()">
+    Solicitud Nuevo Servicio
+  </button>
+</div>
+
+
+<ng-container *ngIf="myServices.length != 0; else elseBlock">
+  <table mat-table
+         [dataSource]="myServices">
+
+    <ng-container matColumnDef="sv_id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let service"> {{service.id_servicio}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let service"> {{service.nombre}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Cédula Jurídica </th>
+      <td mat-cell *matCellDef="let service"> {{service.cedula_j}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td mat-cell *matCellDef="let service">
+        <button mat-button color="warn" (click)="openDeleteServiceComponent(service.id_servicio)">
+          <mat-icon>
+            close
+          </mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+  </table>
+</ng-container>
+
+<ng-template #elseBlock>
+  <div class="centered-container">
+    <p>Este Usuario No Tiene Servicios Asociados</p>
+  </div>
+</ng-template>
+
+

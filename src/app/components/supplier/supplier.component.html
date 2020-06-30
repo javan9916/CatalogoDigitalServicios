@@ -1,0 +1,28 @@
+<div class="container">
+  <mat-toolbar color="primary">
+    <button mat-flat-button class="mainButton" color="primary" (click)="onHomeClick()">
+      Catálogo Digital de Servicios
+    </button>
+    <span class="spacer"></span>
+    <ng-container *ngIf="(isLoggedIn()) && (currentUser != null)">
+      <div class="name">
+        {{ currentUser.nombre }}
+      </div>
+    </ng-container>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+                 [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+      <mat-nav-list>
+        <a mat-list-item routerLink="/supplier/services">
+          <mat-icon>room</mat-icon>
+          Mis Servicios
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="content">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

@@ -46,7 +46,11 @@ import { TagRequestComponent } from './components/requests/tag-request/tag-reque
 import { ServiceRequestComponent } from './components/requests/service-request/service-request.component';
 import { DeleteServiceRequestComponent } from './components/requests/delete-service-request/delete-service-request.component';
 import { RequestProviderComponent } from './components/main/dialogs/requestProvider/requestProvider.component';
-
+import {SupplierComponent} from './components/supplier/supplier.component';
+import {MyServicesComponent} from './components/supplier/my-services/my-services.component';
+import {NewTagComponent} from './components/supplier/my-services/dialogs/new-tag/new-tag.component';
+import {NewServiceComponent} from './components/supplier/my-services/dialogs/new-service/new-service.component';
+import {DeleteServiceComponent} from './components/supplier/my-services/dialogs/delete-service/delete-service.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +70,12 @@ import { RequestProviderComponent } from './components/main/dialogs/requestProvi
     SupplierRequestComponent,
     TagRequestComponent,
     ServiceRequestComponent,
-    DeleteServiceRequestComponent
+    DeleteServiceRequestComponent,
+    SupplierComponent,
+    MyServicesComponent,
+    NewTagComponent,
+    NewServiceComponent,
+    DeleteServiceComponent,
   ],
   imports: [
     BrowserModule,
@@ -97,6 +106,9 @@ import { RequestProviderComponent } from './components/main/dialogs/requestProvi
   ],
   entryComponents: [
     RequestProviderComponent,
+    NewTagComponent,
+    NewServiceComponent,
+    DeleteServiceComponent,
   ],
   providers: [InformationService],
   bootstrap: [AppComponent]

@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>Solicitar Eliminar Servicio</h1>
+<p class="subtitle">¡Las solicitudes deben ser aprobadas por un administrador!</p>
+
+<mat-divider></mat-divider>
+
+<div mat-dialog-content class="container">
+  <mat-form-field class="form-field">
+    <mat-label>ID Solicitante</mat-label>
+    <input matInput placeholder="ID Solicitante" readonly [(ngModel)]="id_solicitante">
+  </mat-form-field>
+
+  <mat-form-field class="form-field">
+    <mat-label>ID Servicio</mat-label>
+    <input matInput placeholder="ID Servicio" readonly [(ngModel)]="id_servicio">
+  </mat-form-field>
+
+  <mat-form-field class="form-desc">
+    <mat-label>Justificación</mat-label>
+    <textarea matInput rows="5" [(ngModel)]="justificacion"></textarea>
+  </mat-form-field>
+
+</div>
+
+<mat-divider></mat-divider>
+
+<div mat-dialog-actions>
+  <span class="spacer"></span>
+  <button mat-raised-button mat-dialog-close color="warn">Cerrar</button>
+  <button mat-raised-button color="primary" (click)="sendRequest()">Enviar</button>
+</div>

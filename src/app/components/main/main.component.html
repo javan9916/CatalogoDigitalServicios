@@ -3,7 +3,7 @@
       Catálogo Digital de Servicios
     </button>
     <span class="spacer"></span>
-    <ng-container>
+    <ng-container *ngIf="(isLoggedIn()) && (currentUser != null) && (getUserType() == 0 )">
       <button mat-flat-button class="button" color="primary" (click)="openRequestProviderComponent()">
         <mat-icon>supervisor_account</mat-icon>
         Solicitar ser proveedor
@@ -25,6 +25,14 @@
         </button>
       </a>
     </ng-container>
+    <ng-container *ngIf="(isLoggedIn()) && (currentUser != null) && (getUserType() == 2 || getUserType() == 0)">
+      <a routerLink="/supplier">
+        <button mat-flat-button class="button" color="primary">
+          <mat-icon>account_circle</mat-icon>
+          {{ currentUser.nombre }}
+        </button>
+      </a>
+    </ng-container>
     <ng-container *ngIf="(isLoggedIn()) && (currentUser != null) && (getUserType() == 1)">
       <a routerLink="/admin/crud_location">
         <button mat-flat-button class="button" color="primary">
@@ -33,6 +41,12 @@
         </button>
       </a>
     </ng-container>
+<!--  <ng-container *ngIf="(isLoggedIn()) && (currentUser != null) && (getUserType() == 0)">-->
+<!--    <button mat-flat-button class="button" color="primary">-->
+<!--      <mat-icon>account_circle</mat-icon>-->
+<!--      {{ currentUser.nombre }}-->
+<!--    </button>-->
+<!--  </ng-container>-->
     <ng-container *ngIf="isLoggedIn()">
       <button mat-flat-button class="button" color="primary" (click)="logout()">
         <mat-icon>input</mat-icon>

@@ -13,6 +13,11 @@ export function getLoginQuery(correoUsuario: string, passwordUsuario: string) {
         nombre
         telefono
         correo
+        servicios {
+          id_servicio
+          nombre
+          cedula_j
+        }
       }
     }
   }`;
@@ -200,6 +205,7 @@ export function getServiceRequestsQuery(quantity: number, offset: number) {
         latitud
         longitud
         ubicacion
+        visible
       }
       code
       message
@@ -237,3 +243,31 @@ export function getDeleteServiceRequestsQuery(quantity: number, offset: number) 
     }
   }`;
 }
+
+export function getCreateRequestTag() {
+  return `mutation CrearSolicitudEtiqueta($Input:InputSolicitudEtiqueta!) {
+    crearSolicitudEtiqueta(input:$Input) {
+      code
+      message
+    }
+  }`;
+}
+
+export function getCreateRequestService() {
+  return `mutation CrearSolicitudServicio($Input:InputSolicitudSrevicio!) {
+    crearSolicitudServicio(input:$Input) {
+      code
+      message
+    }
+  }`;
+}
+
+export function getDeleteRequestService() {
+  return `mutation CrearSolicitudEliminacionServicio($Input: InputSolicitudEliminacionServicio!) {
+    crearSolicitudEliminacionServicio(input:$Input){
+      code
+      message
+    }
+  }`;
+}
+

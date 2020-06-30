@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>Solicitar Nueva Etiqueta</h1>
+<p class="subtitle">¡Las solicitudes deben ser aprobadas por un administrador!</p>
+
+<mat-divider></mat-divider>
+
+<div mat-dialog-content class="content">
+  <form>
+    <mat-form-field class="form-field">
+      <mat-label>Cédula del solicitante</mat-label>
+      <input disabled matInput placeholder="Cédula" name="cedula" [(ngModel)]="id_solicitante">
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+      <mat-label>Etiqueta</mat-label>
+      <input matInput name="etiqueta" [(ngModel)]="etiqueta">
+    </mat-form-field>
+  </form>
+</div>
+
+<mat-divider></mat-divider>
+
+<div mat-dialog-actions>
+  <span class="spacer"></span>
+  <button mat-raised-button mat-dialog-close color="warn">Cerrar</button>
+  <button mat-raised-button color="primary" (click)="sendRequest()">Enviar</button>
+</div>

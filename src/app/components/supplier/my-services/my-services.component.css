@@ -1,0 +1,23 @@
+table {
+  width: 100%;
+}
+
+.centered-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-container {
+  display: flex;
+  width: 100%;
+}
+
+.spacer {
+  flex-grow: 1;
+}
+
+.btn-request {
+  margin: 15px 0 15px 15px;
+}

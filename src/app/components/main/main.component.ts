@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { InformationService } from '../../services/information.service';
-import { UserService } from '../../services/user/user.service'
-import { Usuario } from '../../types/types'
+import { UserService } from '../../services/user/user.service';
+import { Usuario } from '../../types/types';
 import {MatDialog} from '@angular/material/dialog';
 import {RequestProviderComponent} from './dialogs/requestProvider/requestProvider.component';
 
@@ -19,7 +19,7 @@ export class MainComponent implements OnInit {
               private informationService: InformationService,
               private userService: UserService,
               private dialog: MatDialog) {
-    this.currentUser = this.userService.currentUserValue;
+    this.currentUser = JSON.parse(sessionStorage.getItem('user'));
   }
 
   ngOnInit(): void {

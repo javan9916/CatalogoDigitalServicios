@@ -27,6 +27,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 // Modules needed for GraphQL
 import { HttpClientModule } from '@angular/common/http';
@@ -87,6 +88,7 @@ import { DeleteServiceRequestComponent } from './components/requests/delete-serv
     MatSlideToggleModule,
     MatTabsModule,
     MatPaginatorModule,
+    MatButtonToggleModule,
     MatDialogModule,
     MatTableModule,
     HttpClientModule,     // Necesario para poder usar HttpLinkModule

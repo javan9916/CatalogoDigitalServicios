@@ -123,65 +123,240 @@ export function getCreateRequestSupplier() {
   }`;
 }
 
+export function getTagRequestsQuery(quantity: number, offset: number, estado: string) {
+  if (estado == null) {
+    return `query solicitudesEtiqueta{
+      solicitudesEtiqueta(quantity: ${quantity} offset: ${offset} estado: ${estado}){
+        count
+        data{
+          id_solicitud_etiqueta
+          solicitud{
+            id_solicitud
+            admin{
+              id_usuario
+              nombre
+            }
+            solicitante{
+              id_usuario
+              nombre
+            }
+            estado
+            fecha_solicitud
+          }
+          etiqueta
+        }
+        code
+        message
+      }
+    }`;
+  } else {
+    return `query solicitudesEtiqueta{
+      solicitudesEtiqueta(quantity: ${quantity} offset: ${offset} estado: "${estado}"){
+        count
+        data{
+          id_solicitud_etiqueta
+          solicitud{
+            id_solicitud
+            admin{
+              id_usuario
+              nombre
+            }
+            solicitante{
+              id_usuario
+              nombre
+            }
+            estado
+            fecha_solicitud
+          }
+          etiqueta
+        }
+        code
+        message
+      }
+    }`;
+  }
+}
 
-export function getTagRequestsQuery(quantity: number, offset: number) {
-  return `query solicitudesEtiqueta{
-    solicitudesEtiqueta(quantity: ${quantity} offset: ${offset}){
+export function resolveTagRequestQuery(id_request: number, id_admin: number, decision: boolean) {
+  return `mutation {
+    resolverSolicitudEtiqueta(id_admin: ${id_admin} id_solicitud: ${id_request} decision: ${decision}) {
+>>>>>>> 114b3ab93cd2412393c2fdfd189ced5fdfb33db2
       count
+      code
+      message
       data{
         id_solicitud_etiqueta
         solicitud{
           id_solicitud
           admin{
             id_usuario
-            nombre
+            tipo
           }
           solicitante{
             id_usuario
             nombre
           }
           estado
-          fecha_solicitud
         }
         etiqueta
       }
-      code
-      message
     }
   }`;
 }
 
-export function getSupplierRequestsQuery(quantity: number, offset: number) {
-  return `query solicitudesProveedor{
-    solicitudesProveedor(quantity: ${quantity} offset: ${offset}){
+export function getSupplierRequestsQuery(quantity: number, offset: number, estado: string) {
+  if (estado == null) {
+    return `query solicitudesProveedor{
+      solicitudesProveedor(quantity: ${quantity} offset: ${offset} estado: ${estado}){
+        count
+        data{
+          id_solicitud_proveedor
+          solicitud{
+            id_solicitud
+            admin{
+              id_usuario
+              nombre
+            }
+            solicitante{
+              id_usuario
+              nombre
+            }
+            estado
+            fecha_solicitud
+            fecha_decision
+          }
+          justificacion
+        }
+        code
+        message
+      }
+    }`;
+  } else {
+    return `query solicitudesProveedor{
+      solicitudesProveedor(quantity: ${quantity} offset: ${offset} estado: "${estado}"){
+        count
+        data{
+          id_solicitud_proveedor
+          solicitud{
+            id_solicitud
+            admin{
+              id_usuario
+              nombre
+            }
+            solicitante{
+              id_usuario
+              nombre
+            }
+            estado
+            fecha_solicitud
+            fecha_decision
+          }
+          justificacion
+        }
+        code
+        message
+      }
+    }`;
+  }
+}
+
+export function resolveSupplierRequestQuery(id_request: number, id_admin: number, decision: boolean) {
+  return `mutation {
+    resolverSolicitudProveedor(id_admin: ${id_admin} id_solicitud: ${id_request} decision: ${decision}) {
       count
+      code
+      message
       data{
         id_solicitud_proveedor
         solicitud{
           id_solicitud
           admin{
             id_usuario
-            nombre
+            tipo
           }
           solicitante{
             id_usuario
             nombre
           }
           estado
-          fecha_solicitud
-          fecha_decision
         }
         justificacion
       }
-      code
-      message
     }
   }`;
 }
 
-export function getServiceRequestsQuery(quantity: number, offset: number) {
-  return `query solicitudesServicio{
-    solicitudesServicio(quantity: ${quantity} offset: ${offset}){
+export function getServiceRequestsQuery(quantity: number, offset: number, estado: string) {
+  if (estado == null) {
+    return `query solicitudesServicio{
+      solicitudesServicio(quantity: ${quantity} offset: ${offset} estado: ${estado}){
+        count
+        data{
+          id_solicitud_servicio
+          solicitud{
+            id_solicitud
+            admin{
+              id_usuario
+              nombre
+            }
+            solicitante{
+              id_usuario
+              nombre
+            }
+            estado
+            fecha_solicitud
+            fecha_decision
+          }
+          cedula_j
+          nombre
+          descripcion
+          latitud
+          longitud
+          ubicacion
+          visible
+        }
+        code
+        message
+      }
+    }`;
+  } else {
+    return `query solicitudesServicio{
+      solicitudesServicio(quantity: ${quantity} offset: ${offset} estado: "${estado}"){
+        count
+        data{
+          id_solicitud_servicio
+          solicitud{
+            id_solicitud
+            admin{
+              id_usuario
+              nombre
+            }
+            solicitante{
+              id_usuario
+              nombre
+            }
+            estado
+            fecha_solicitud
+            fecha_decision
+          }
+          cedula_j
+          nombre
+          descripcion
+          latitud
+          longitud
+          ubicacion
+          visible
+        }
+        code
+        message
+      }
+    }`;
+  }
+}
+
+export function resolveServiceRequestQuery(id_request: number, id_admin: number, decision: boolean) {
+  return `mutation {
+    resolverSolicitudServicio(id_admin: ${id_admin} id_solicitud: ${id_request} decision: ${decision}) {
       count
       data{
         id_solicitud_servicio
@@ -189,15 +364,13 @@ export function getServiceRequestsQuery(quantity: number, offset: number) {
           id_solicitud
           admin{
             id_usuario
-            nombre
+            tipo
           }
           solicitante{
             id_usuario
             nombre
           }
           estado
-          fecha_solicitud
-          fecha_decision
         }
         cedula_j
         nombre
@@ -213,33 +386,93 @@ export function getServiceRequestsQuery(quantity: number, offset: number) {
   }`;
 }
 
-export function getDeleteServiceRequestsQuery(quantity: number, offset: number) {
-  return `query solicitudesEliminacionServicio{
-    solicitudesEliminacionServicio(quantity: ${quantity} offset: ${offset}){
-      count
-      data{
-        id_solicitud_eliminacion
-        solicitud{
-          id_solicitud
-          admin{
-            id_usuario
-            nombre
+export function getDeleteServiceRequestsQuery(quantity: number, offset: number, estado: string) {
+  if (estado == null) {
+    return `query solicitudesEliminacionServicio{
+      solicitudesEliminacionServicio(quantity: ${quantity} offset: ${offset} estado: ${estado}){
+        count
+        data{
+          id_solicitud_eliminacion
+          solicitud{
+            id_solicitud
+            admin{
+              id_usuario
+              nombre
+            }
+            solicitante{
+              id_usuario
+              nombre
+            }
+            estado
+            fecha_solicitud
+            fecha_decision
           }
-          solicitante{
-            id_usuario
-            nombre
+          servicio {
+            id_servicio
           }
-          estado
-          fecha_solicitud
-          fecha_decision
+          justificacion
         }
-        servicio {
-          id_servicio
-        }
-        justificacion
+        code
+        message
       }
-      code
-      message
+    }`;
+  } else {
+    return `query solicitudesEliminacionServicio{
+      solicitudesEliminacionServicio(quantity: ${quantity} offset: ${offset} estado: "${estado}"){
+        count
+        data{
+          id_solicitud_eliminacion
+          solicitud{
+            id_solicitud
+            admin{
+              id_usuario
+              nombre
+            }
+            solicitante{
+              id_usuario
+              nombre
+            }
+            estado
+            fecha_solicitud
+            fecha_decision
+          }
+          servicio {
+            id_servicio
+          }
+          justificacion
+        }
+        code
+        message
+      }
+    }`;
+  }
+}
+
+export function resolveDeleteServiceRequestQuery(id_request: number, id_admin: number, decision: boolean) {
+  return `mutation {
+    resolverSolicitudEliminacionServicio(id_admin: ${id_admin} id_solicitud: ${id_request} decision: ${decision}) {
+      count
+        data{
+          id_solicitud_eliminacion
+          solicitud{
+            id_solicitud
+            admin{
+              id_usuario
+              tipo
+            }
+            solicitante{
+              id_usuario
+              nombre
+            }
+            estado
+          }
+          servicio {
+            id_servicio
+          }
+          justificacion
+        }
+        code
+        message
     }
   }`;
 }

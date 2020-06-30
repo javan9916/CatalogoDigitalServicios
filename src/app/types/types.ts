@@ -1,7 +1,7 @@
 import {coerceNumberProperty} from '@angular/cdk/coercion';
 
 export type Usuario = {
-  'idUsuario': number;
+  'id_usuario': number;
   'tipo': number;
   'cedula': string;
   'nombre': string;

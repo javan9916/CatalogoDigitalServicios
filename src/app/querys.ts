@@ -117,3 +117,123 @@ export function getCreateRequestSupplier() {
     }
   }`;
 }
+
+
+export function getTagRequestsQuery(quantity: number, offset: number) {
+  return `query solicitudesEtiqueta{
+    solicitudesEtiqueta(quantity: ${quantity} offset: ${offset}){
+      count
+      data{
+        id_solicitud_etiqueta
+        solicitud{
+          id_solicitud
+          admin{
+            id_usuario
+            nombre
+          }
+          solicitante{
+            id_usuario
+            nombre
+          }
+          estado
+          fecha_solicitud
+        }
+        etiqueta
+      }
+      code
+      message
+    }
+  }`;
+}
+
+export function getSupplierRequestsQuery(quantity: number, offset: number) {
+  return `query solicitudesProveedor{
+    solicitudesProveedor(quantity: ${quantity} offset: ${offset}){
+      count
+      data{
+        id_solicitud_proveedor
+        solicitud{
+          id_solicitud
+          admin{
+            id_usuario
+            nombre
+          }
+          solicitante{
+            id_usuario
+            nombre
+          }
+          estado
+          fecha_solicitud
+          fecha_decision
+        }
+        justificacion
+      }
+      code
+      message
+    }
+  }`;
+}
+
+export function getServiceRequestsQuery(quantity: number, offset: number) {
+  return `query solicitudesServicio{
+    solicitudesServicio(quantity: ${quantity} offset: ${offset}){
+      count
+      data{
+        id_solicitud_servicio
+        solicitud{
+          id_solicitud
+          admin{
+            id_usuario
+            nombre
+          }
+          solicitante{
+            id_usuario
+            nombre
+          }
+          estado
+          fecha_solicitud
+          fecha_decision
+        }
+        cedula_j
+        nombre
+        descripcion
+        latitud
+        longitud
+        ubicacion
+      }
+      code
+      message
+    }
+  }`;
+}
+
+export function getDeleteServiceRequestsQuery(quantity: number, offset: number) {
+  return `query solicitudesEliminacionServicio{
+    solicitudesEliminacionServicio(quantity: ${quantity} offset: ${offset}){
+      count
+      data{
+        id_solicitud_eliminacion
+        solicitud{
+          id_solicitud
+          admin{
+            id_usuario
+            nombre
+          }
+          solicitante{
+            id_usuario
+            nombre
+          }
+          estado
+          fecha_solicitud
+          fecha_decision
+        }
+        servicio {
+          id_servicio
+        }
+        justificacion
+      }
+      code
+      message
+    }
+  }`;
+}

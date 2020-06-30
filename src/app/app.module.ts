@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AgmCoreModule } from '@agm/core'
+import { AgmCoreModule } from '@agm/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,7 +14,7 @@ import { CreateLocationComponent } from './components/crud-location/create-locat
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button'
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -40,7 +40,12 @@ import { UpdateLocationComponent } from './components/crud-location/update-locat
 import { CrudLocationComponent } from './components/crud-location/crud-location.component';
 import { LocationComponent } from './components/location/location.component';
 import { DialogComponent } from './components/dialog/dialog.component';
-import {RequestProviderComponent} from './components/main/dialogs/requestProvider/requestProvider.component';
+import { RequestsComponent } from './components/requests/requests.component';
+import { SupplierRequestComponent } from './components/requests/supplier-request/supplier-request.component';
+import { TagRequestComponent } from './components/requests/tag-request/tag-request.component';
+import { ServiceRequestComponent } from './components/requests/service-request/service-request.component';
+import { DeleteServiceRequestComponent } from './components/requests/delete-service-request/delete-service-request.component';
+import { RequestProviderComponent } from './components/main/dialogs/requestProvider/requestProvider.component';
 
 
 @NgModule({
@@ -57,6 +62,11 @@ import {RequestProviderComponent} from './components/main/dialogs/requestProvide
     LocationComponent,
     DialogComponent,
     RequestProviderComponent,
+    RequestsComponent,
+    SupplierRequestComponent,
+    TagRequestComponent,
+    ServiceRequestComponent,
+    DeleteServiceRequestComponent
   ],
   imports: [
     BrowserModule,

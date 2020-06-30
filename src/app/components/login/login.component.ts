@@ -51,6 +51,7 @@ export class LoginComponent implements OnInit {
       const response: ResponseUsuario = result.data.login;
       if (response.code === 200) {
         this.userService.currentUserSubject.next(response.data);
+        sessionStorage.setItem('user', JSON.stringify(response.data));
         if (response.data.tipo === 1) {
           this.router.navigate(['/admin/crud_location']);
         } else {

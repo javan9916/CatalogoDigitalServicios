@@ -3,6 +3,12 @@
       Catálogo Digital de Servicios
     </button>
     <span class="spacer"></span>
+    <ng-container>
+      <button mat-flat-button class="button" color="primary" (click)="openRequestProviderComponent()">
+        <mat-icon>supervisor_account</mat-icon>
+        Solicitar ser proveedor
+      </button>
+    </ng-container>
     <a routerLink="/login">
       <ng-container *ngIf="!isLoggedIn()">
         <button mat-flat-button class="button" color="primary">

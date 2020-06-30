@@ -1,0 +1,23 @@
+h1 {
+  margin-bottom: 0;
+}
+
+.subtitle {
+  color: gray;
+}
+
+.content {
+  margin: 24px 0 12px 0;
+}
+
+.form-field {
+  width: 100%
+}
+
+.action-btns {
+  display: flex;
+}
+
+.spacer {
+  flex-grow: 1;
+}

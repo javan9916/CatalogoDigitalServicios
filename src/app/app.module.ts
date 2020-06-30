@@ -40,6 +40,7 @@ import { UpdateLocationComponent } from './components/crud-location/update-locat
 import { CrudLocationComponent } from './components/crud-location/crud-location.component';
 import { LocationComponent } from './components/location/location.component';
 import { DialogComponent } from './components/dialog/dialog.component';
+import {RequestProviderComponent} from './components/main/dialogs/requestProvider/requestProvider.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { DialogComponent } from './components/dialog/dialog.component';
     UpdateLocationComponent,
     CrudLocationComponent,
     LocationComponent,
-    DialogComponent
+    DialogComponent,
+    RequestProviderComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,6 +84,9 @@ import { DialogComponent } from './components/dialog/dialog.component';
     HttpClientModule,     // Necesario para poder usar HttpLinkModule
     ApolloModule,         // Modulo principal de Apollo
     HttpLinkModule, LayoutModule, MatListModule,       // Necesario para obtener datos
+  ],
+  entryComponents: [
+    RequestProviderComponent,
   ],
   providers: [InformationService],
   bootstrap: [AppComponent]

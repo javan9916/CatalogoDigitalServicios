@@ -108,3 +108,12 @@ export function updateLocationQuery() {
     }
   }`;
 }
+
+export function getCreateRequestSupplier() {
+  return `mutation CrearSolicitudProveedor($Input: InputSolicitudProveedor!) {
+    crearSolicitudProveedor(input: $Input) {
+      code
+      message
+    }
+  }`;
+}

@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { InformationService } from '../../services/information.service';
 import { UserService } from '../../services/user/user.service'
 import { Usuario } from '../../types/types'
+import {MatDialog} from '@angular/material/dialog';
+import {RequestProviderComponent} from './dialogs/requestProvider/requestProvider.component';
 
 @Component({
   selector: 'app-main',
@@ -15,7 +17,8 @@ export class MainComponent implements OnInit {
 
   constructor(private router: Router,
               private informationService: InformationService,
-              private userService: UserService) {
+              private userService: UserService,
+              private dialog: MatDialog) {
     this.currentUser = this.userService.currentUserValue;
   }
 
@@ -41,6 +44,10 @@ export class MainComponent implements OnInit {
     this.informationService.showMessage('Se ha cerrado la sesión', 'success');
     sessionStorage.removeItem('loggedIn');
     this.router.navigate(['/login']);
+  }
+
+  openRequestProviderComponent() {
+    this.dialog.open(RequestProviderComponent);
   }
 
 }

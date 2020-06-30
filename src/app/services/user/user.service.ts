@@ -11,7 +11,7 @@ export class UserService {
   public currentUserSubject: BehaviorSubject<Usuario>;
   public currentUser: Observable<Usuario>;
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<Usuario>(JSON.parse(sessionStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }

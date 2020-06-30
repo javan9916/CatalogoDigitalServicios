@@ -67,13 +67,11 @@ export class ServiceRequestComponent implements OnInit {
     }).subscribe( (result: any) => {
       const response: ResponseServiceRequest = result.data.solicitudesServicio;
       if (response.code === 200) {
-        console.log(response);
         this.service_request_data = response.data;
         this.dataSource.data = this.service_request_data;
         this.dataLength = this.dataSource.data.length;
         this.informationService.showMessage(response.message, 'success');
       } else {
-        console.log(response);
         this.informationService.showMessage(response.message, 'warn');
       }
     }, error => {
@@ -83,21 +81,18 @@ export class ServiceRequestComponent implements OnInit {
   }
 
   acceptRequest(element) {
-    console.log(element);
-    this.resolveTagRequest(element.id_solicitud_etiqueta, this.currentUser.idUsuario, true);
+    this.resolveTagRequest(element.id_solicitud_servicio, this.currentUser.id_usuario, true);
   }
 
   rejectRequest(element) {
-    console.log(element);
-    this.resolveTagRequest(element.id_solicitud_etiqueta, this.currentUser.idUsuario, false);
+    this.resolveTagRequest(element.id_solicitud_servicio, this.currentUser.id_usuario, false);
   }
 
   public resolveTagRequest = (id_request: number, id_admin: number, decision: boolean) => {
     this.apollo.mutate({
       mutation: gql`${resolveServiceRequestQuery(id_request, id_admin, decision)}`
     }).subscribe((result: any) => {
-      const response = result.data;
-      console.log(response);
+      const response = result.data.resolverSolicitudServicio;
       if (response.code === 200) {
         this.getServiceRequests(this.pageSize, this.pageIndex, this.state);
         this.informationService.showMessage(response.message, 'success');
@@ -105,6 +100,7 @@ export class ServiceRequestComponent implements OnInit {
         this.informationService.showMessage(response.message, 'warn');
       }
     }, error => {
+      console.log(error);
       this.informationService.showMessage('Error message', 'error');
     });
   }

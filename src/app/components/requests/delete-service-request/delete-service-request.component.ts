@@ -66,29 +66,25 @@ export class DeleteServiceRequestComponent implements OnInit {
     }).subscribe( (result: any) => {
       const response: ResponseDeleteServiceRequest = result.data.solicitudesEliminacionServicio;
       if (response.code === 200) {
-        console.log(response);
         this.delete_service_request_data = response.data;
         this.dataSource.data = this.delete_service_request_data;
         this.dataLength = this.dataSource.data.length;
         this.informationService.showMessage(response.message, 'success');
       } else {
-        console.log(response);
         this.informationService.showMessage(response.message, 'warn');
       }
     }, error => {
-      console.log(error)
+      console.log(error);
       this.informationService.showMessage('No se han encontrado las solicitudes', 'warn');
     });
   }
 
   acceptRequest(element) {
-    console.log(element);
-    this.resolveTagRequest(element.id_solicitud_etiqueta, this.currentUser.idUsuario, true);
+    this.resolveTagRequest(element.id_solicitud_eliminacion, this.currentUser.id_usuario, true);
   }
 
   rejectRequest(element) {
-    console.log(element);
-    this.resolveTagRequest(element.id_solicitud_etiqueta, this.currentUser.idUsuario, false);
+    this.resolveTagRequest(element.id_solicitud_eliminacion, this.currentUser.id_usuario, false);
   }
 
   public resolveTagRequest = (id_request: number, id_admin: number, decision: boolean) => {
@@ -96,7 +92,6 @@ export class DeleteServiceRequestComponent implements OnInit {
       mutation: gql`${resolveDeleteServiceRequestQuery(id_request, id_admin, decision)}`
     }).subscribe((result: any) => {
       const response = result.data;
-      console.log(response);
       if (response.code === 200) {
         this.getDeleteServiceRequests(this.pageSize, this.pageIndex, this.state);
         this.informationService.showMessage(response.message, 'success');
@@ -104,6 +99,7 @@ export class DeleteServiceRequestComponent implements OnInit {
         this.informationService.showMessage(response.message, 'warn');
       }
     }, error => {
+      console.log(error);
       this.informationService.showMessage('Error message', 'error');
     });
   }

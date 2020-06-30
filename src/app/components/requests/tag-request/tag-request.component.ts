@@ -66,38 +66,32 @@ export class TagRequestComponent implements OnInit {
     }).subscribe((result: any) => {
       const response: ResponseTagRequest = result.data.solicitudesEtiqueta;
       if (response.code === 200) {
-        console.log(response);
         this.tag_request_data = response.data;
         this.dataSource.data = this.tag_request_data;
         this.dataLength = this.dataSource.data.length;
         this.informationService.showMessage(response.message, 'success');
       } else {
-        console.log(response);
         this.informationService.showMessage(response.message, 'warn');
       }
     }, error => {
-      console.log(error)
+      console.log(error);
       this.informationService.showMessage('No se han encontrado las solicitudes ', 'warn');
     });
   }
 
   acceptRequest(element) {
-    console.log(element);
-    this.resolveTagRequest(element.id_solicitud_etiqueta, this.currentUser.idUsuario, true);
+    this.resolveTagRequest(element.id_solicitud_etiqueta, this.currentUser.id_usuario, true);
   }
 
   rejectRequest(element) {
-    console.log(element);
-    this.resolveTagRequest(element.id_solicitud_etiqueta, this.currentUser.idUsuario, false);
+    this.resolveTagRequest(element.id_solicitud_etiqueta, this.currentUser.id_usuario, false);
   }
 
   public resolveTagRequest = (id_request: number, id_admin: number, decision: boolean) => {
-    
     this.apollo.mutate({
       mutation: gql`${resolveTagRequestQuery(id_request, id_admin, decision)}`
     }).subscribe((result: any) => {
-      const response = result.data;
-      console.log(response);
+      const response = result.data.resolverSolicitudEtiqueta;
       if (response.code === 200) {
         this.getTagRequests(this.pageSize, this.pageIndex, this.state);
         this.informationService.showMessage(response.message, 'success');
@@ -105,6 +99,7 @@ export class TagRequestComponent implements OnInit {
         this.informationService.showMessage(response.message, 'warn');
       }
     }, error => {
+      console.log(error);
       this.informationService.showMessage('Error message', 'error');
     });
   }

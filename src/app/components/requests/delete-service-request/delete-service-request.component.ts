@@ -103,5 +103,4 @@ export class DeleteServiceRequestComponent implements OnInit {
       this.informationService.showMessage('Error message', 'error');
     });
   }
-
 }

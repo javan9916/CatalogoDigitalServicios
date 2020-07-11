@@ -9,8 +9,9 @@ import { CrudLocationComponent } from './components/crud-location/crud-location.
 import { LocationsComponent } from './components/locations/locations.component';
 import { LocationComponent } from './components/location/location.component';
 import { RequestsComponent } from './components/requests/requests.component';
-import {SupplierComponent} from './components/supplier/supplier.component';
-import {MyServicesComponent} from './components/supplier/my-services/my-services.component';
+import { SupplierComponent } from './components/supplier/supplier.component';
+import { MyServicesComponent } from './components/supplier/my-services/my-services.component';
+import { CrudTagComponent } from './components/crud-tag/crud-tag.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
@@ -23,7 +24,8 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'admin', component: AdminComponent, children: [
     { path: 'crud_location', component: CrudLocationComponent },
-    { path: 'requests', component: RequestsComponent }
+    { path: 'requests', component: RequestsComponent },
+    { path: 'crud_tag', component: CrudTagComponent }
   ]},
   { path: 'supplier', component: SupplierComponent, children: [
       { path: 'services', component: MyServicesComponent }

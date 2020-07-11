@@ -180,7 +180,6 @@ export function getTagRequestsQuery(quantity: number, offset: number, estado: st
 export function resolveTagRequestQuery(id_request: number, id_admin: number, decision: boolean) {
   return `mutation {
     resolverSolicitudEtiqueta(id_admin: ${id_admin} id_solicitud: ${id_request} decision: ${decision}) {
->>>>>>> 114b3ab93cd2412393c2fdfd189ced5fdfb33db2
       count
       code
       message
@@ -498,6 +497,19 @@ export function getCreateRequestService() {
 export function getDeleteRequestService() {
   return `mutation CrearSolicitudEliminacionServicio($Input: InputSolicitudEliminacionServicio!) {
     crearSolicitudEliminacionServicio(input:$Input){
+      code
+      message
+    }
+  }`;
+}
+
+export function getTagQuery() {
+  return `mutation agregarEtiqueta($Input: InputEtiqueta!){
+    agregarEtiqueta(input: $Input) {
+      count
+      data {
+        nombre
+      }
       code
       message
     }

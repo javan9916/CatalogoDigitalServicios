@@ -9,7 +9,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 })
 export class DialogComponent implements OnInit {
 
-  locationForm: FormGroup;
+  dialogForm: FormGroup;
   
   locationId: number;
   locationName: string;
@@ -21,6 +21,8 @@ export class DialogComponent implements OnInit {
   locationRadius: number;
   locationCircle: number;
   marker: any;
+
+  tagName: string;
   
   action: string;
   index: number;
@@ -50,13 +52,13 @@ export class DialogComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.action == 'Eliminar') {
-      this.locationForm = this.formBuilder.group({
+      this.dialogForm = this.formBuilder.group({
         id: [this.locationId],
         name: [this.locationName],
         action: [this.action]
       });
     } else if (this.action == 'Editar') {
-      this.locationForm = this.formBuilder.group({
+      this.dialogForm = this.formBuilder.group({
         id: [this.locationId],
         name: [this.locationName],
         visible: [this.locationVisible],
@@ -64,6 +66,11 @@ export class DialogComponent implements OnInit {
         lng: [this.locationLng],
         radius: [this.locationCircle],
         marker: [this.marker],
+        action: [this.action],
+      });
+    } else if (this.action == 'Nueva Etiqueta') {
+      this.dialogForm = this.formBuilder.group({
+        name: [this.tagName],
         action: [this.action],
       })
     }
@@ -80,9 +87,14 @@ export class DialogComponent implements OnInit {
   }
 
   save() {
-    this.locationForm.controls['lat'].setValue(this.locationMarkerLat);
-    this.locationForm.controls['lng'].setValue(this.locationMarkerLng);
-    this.dialogRef.close(this.locationForm.value);
+    if (this.action == 'Nueva Etiqueta') {
+      this.dialogRef.close(this.dialogForm.value);
+    } else {
+      this.dialogForm.controls['lat'].setValue(this.locationMarkerLat);
+      this.dialogForm.controls['lng'].setValue(this.locationMarkerLng);
+      this.dialogRef.close(this.dialogForm.value);
+    }
+    
   }
 
   close() {

@@ -6,3 +6,12 @@
     text-align: right !important;
     justify-content: flex-end !important;
 }
+
+.toggle-container {
+    text-align: right;
+    padding: 10px;
+}
+
+.toggle-group {
+    font-size: 16px;
+}

@@ -3,7 +3,6 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { UserService } from '../../services/user/user.service'
 import { Usuario } from '../../types/types'
 
 @Component({
@@ -22,17 +21,18 @@ export class AdminComponent {
     );
 
   constructor(private breakpointObserver: BreakpointObserver,
-              private router: Router,
-              private userService: UserService) {
-                this.currentUser = this.userService.currentUserValue;
-              }
+              private router: Router) {}
+
+  ngOnInit(){
+    this.currentUser = JSON.parse(window.sessionStorage.getItem('user'));
+  }
 
   onHomeClick() {
     this.router.navigateByUrl('/main');
   }
 
   isLoggedIn() {
-    return sessionStorage.getItem('loggedIn') === 'true';
+    return window.sessionStorage.getItem('loggedIn') === 'true';
   }
 
 }

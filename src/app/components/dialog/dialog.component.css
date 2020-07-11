@@ -4,11 +4,6 @@
     margin: 10px;
 }
 
-.add-button {
-    background-color: #4CAF50;
-    color:white;
-}
-
 .mat-dialog-actions {
     justify-content: flex-end;
 }

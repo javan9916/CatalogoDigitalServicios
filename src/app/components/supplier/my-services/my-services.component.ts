@@ -15,26 +15,32 @@ export class MyServicesComponent {
 
   currentUser;
   myServices = [];
+  
   constructor(private router: Router,
               private dialog: MatDialog) {
     this.currentUser = JSON.parse(sessionStorage.getItem('user'));
     this.myServices = this.currentUser.servicios;
     console.log(this.myServices);
   }
+
   onHomeClick() {
     this.router.navigateByUrl('/main');
   }
+
   isLoggedIn() {
     return sessionStorage.getItem('loggedIn') === 'true';
   }
+
   openNewTagComponent() {
     this.dialog.open(NewTagComponent);
   }
+
   openNewServiceComponent() {
     this.dialog.open(NewServiceComponent, {
       width: '800px'
     });
   }
+
   openDeleteServiceComponent(id_servicio) {
     this.dialog.open(DeleteServiceComponent, {
       data: {

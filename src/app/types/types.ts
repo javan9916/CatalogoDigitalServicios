@@ -128,3 +128,6 @@ export type ResponseDeleteServiceRequest = {
   'message': string,
 };
 
+export type InputTag = {
+  'nombre': string
+};

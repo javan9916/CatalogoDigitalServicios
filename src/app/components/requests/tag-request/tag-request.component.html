@@ -1,8 +1,10 @@
-<mat-button-toggle-group>
-    <mat-button-toggle color="primary" (click)="getPending()">Pendientes</mat-button-toggle>
-    <mat-button-toggle color="primary" (click)="getAccepted()">Aceptadas</mat-button-toggle>
-    <mat-button-toggle color="primary" (click)="getRejected()">Rechazadas</mat-button-toggle>
-</mat-button-toggle-group>
+<div class="toggle-container">
+    <mat-button-toggle-group class="toggle-group">
+        <mat-button-toggle color="primary" (click)="getPending()">Pendientes</mat-button-toggle>
+        <mat-button-toggle color="primary" (click)="getAccepted()">Aceptadas</mat-button-toggle>
+        <mat-button-toggle color="primary" (click)="getRejected()">Rechazadas</mat-button-toggle>
+    </mat-button-toggle-group>
+</div>
 
 <mat-table [dataSource]="dataSource" #mytable>
 

@@ -16,13 +16,16 @@ export class SupplierComponent {
       map(result => result.matches),
       shareReplay()
     );
+    
   constructor(private router: Router,
               private breakpointObserver: BreakpointObserver) {
     this.currentUser = JSON.parse(sessionStorage.getItem('user'));
   }
+
   onHomeClick() {
     this.router.navigateByUrl('/main');
   }
+
   isLoggedIn() {
     return sessionStorage.getItem('loggedIn') === 'true';
   }

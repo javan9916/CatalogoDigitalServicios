@@ -7,7 +7,6 @@ import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { getSupplierRequestsQuery, resolveSupplierRequestQuery } from '../../../querys';
 import { InformationService } from '../../../services/information.service';
-import { UserService } from '../../../services/user/user.service';
 
 @Component({
   selector: 'app-supplier-request',
@@ -29,33 +28,31 @@ export class SupplierRequestComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   
-  constructor(private apollo: Apollo, private informationService: InformationService,
-    private userService: UserService) {
-      this.currentUser = this.userService.currentUserValue;
-     }
+  constructor(private apollo: Apollo, private informationService: InformationService) {}
 
   ngOnInit(): void {
+    this.currentUser = JSON.parse(window.sessionStorage.getItem('user'));
     this.state = null;
-    this.getSupplierRequests(this.pageSize, 0, this.state);
+    this.getSupplierRequests(this.pageSize, (this.pageSize * this.pageIndex), this.state);
   }
 
   onPageChanged(event) {
-    this.getSupplierRequests(event.pageSize, event.pageIndex + 1, this.state);
+    this.getSupplierRequests(event.pageSize, event.pageSize*(event.pageIndex + 1), this.state);
   }
 
   getPending() {
     this.state = 'P';
-    this.getSupplierRequests(this.pageSize, this.pageIndex, this.state);
+    this.getSupplierRequests(this.pageSize, (this.pageSize * this.pageIndex), this.state);
   }
 
   getAccepted() {
     this.state = 'A';
-    this.getSupplierRequests(this.pageSize, this.pageIndex, this.state);
+    this.getSupplierRequests(this.pageSize, (this.pageSize * this.pageIndex), this.state);
   }
 
   getRejected() {
     this.state = 'R';
-    this.getSupplierRequests(this.pageSize, this.pageIndex, this.state);
+    this.getSupplierRequests(this.pageSize, (this.pageSize * this.pageIndex), this.state);
   }
 
   public getSupplierRequests = (quantity: number, offset: number, estado: string) => {
@@ -68,7 +65,7 @@ export class SupplierRequestComponent implements OnInit {
       if (response.code === 200) {
         this.supplier_request_data = response.data;
         this.dataSource.data = this.supplier_request_data;
-        this.dataLength = this.dataSource.data.length;
+        this.dataLength = response.count;
         this.informationService.showMessage(response.message, 'success');
       } else {
         this.informationService.showMessage(response.message, 'warn');

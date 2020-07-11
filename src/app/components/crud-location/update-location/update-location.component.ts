@@ -2,9 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from '../../dialog/dialog.component'
+import { DialogComponent } from '../../dialog/dialog.component';
 
-import { ResponseLocalizacion, InputUpdateLocalizacion } from '../../../types/types'
+import { ResponseLocalizacion, InputUpdateLocalizacion } from '../../../types/types';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { getLocationsQuery, deleteLocationQuery, updateLocationQuery } from '../../../querys';
@@ -31,11 +31,11 @@ export class UpdateLocationComponent implements OnInit {
     private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.getLocations(this.pageSize, 0);
+    this.getLocations(this.pageSize, (this.pageSize * this.pageIndex));
   }
 
   onPageChanged(event) {
-    this.getLocations(event.pageSize, event.pageIndex + 1);
+    this.getLocations(event.pageSize, event.pageSize*(event.pageIndex + 1));
   }
 
   public getLocations = (quantity: number, offset: number) => {
@@ -49,6 +49,7 @@ export class UpdateLocationComponent implements OnInit {
         console.log(response);
         this.location_data = response.data;
         this.dataSource.data = this.location_data;
+        this.dataLength = response.count;
         this.informationService.showMessage(response.message, 'success');
       } else {
         console.log(response);

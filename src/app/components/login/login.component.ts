@@ -8,7 +8,6 @@ import gql from 'graphql-tag';
 import { getLoginQuery } from '../../querys';
 import { InformationService } from '../../services/information.service';
 import { Router } from '@angular/router';
-import { UserService } from '../../services/user/user.service'
 
 @Component({
   selector: 'app-login',
@@ -21,8 +20,7 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private apollo: Apollo,
               private informationService: InformationService,
-              private router: Router,
-              private userService: UserService) {
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -50,19 +48,20 @@ export class LoginComponent implements OnInit {
     }).subscribe( (result: any) => {
       const response: ResponseUsuario = result.data.login;
       if (response.code === 200) {
-        this.userService.currentUserSubject.next(response.data);
-        sessionStorage.setItem('user', JSON.stringify(response.data));
+        window.sessionStorage.setItem('user', JSON.stringify(response.data));
         if (response.data.tipo === 1) {
           this.router.navigate(['/admin/crud_location']);
         } else {
           this.router.navigate(['/main']);
         }
         this.informationService.showMessage(response.message, 'success');
-        sessionStorage.setItem('loggedIn', 'true');
+        window.sessionStorage.setItem('loggedIn', 'true');
       } else {
         this.informationService.showMessage(response.message, 'warn');
+        console.log(response);
       }
     }, error => {
+      console.log(error);
       this.informationService.showMessage('No se ha encontrado el usuario', 'warn');
     });
   }

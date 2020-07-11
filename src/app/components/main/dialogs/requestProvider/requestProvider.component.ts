@@ -1,10 +1,10 @@
-import {Component} from '@angular/core';
-import {UserService} from '../../../../services/user/user.service';
-import {InformationService} from '../../../../services/information.service';
-import {Apollo} from 'apollo-angular';
+import { Component } from '@angular/core';
+import { InformationService } from '../../../../services/information.service';
+import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
-import {getCreateRequestSupplier} from '../../../../querys';
-import {MatDialogRef} from '@angular/material/dialog';
+import { getCreateRequestSupplier } from '../../../../querys';
+import { MatDialogRef } from '@angular/material/dialog';
+import { Usuario } from '../../../../types/types';
 
 @Component({
   selector: 'app-request-provider-dialog',
@@ -12,16 +12,18 @@ import {MatDialogRef} from '@angular/material/dialog';
   styleUrls: ['requestProvider.component.css']
 })
 export class RequestProviderComponent {
-  currentUser;
+  currentUser: Usuario;
   id_solicitante;
   justificacion;
-  constructor(private userService: UserService,
-              private informationService: InformationService,
+
+  constructor(private informationService: InformationService,
               private apollo: Apollo,
               private dialogRef: MatDialogRef<RequestProviderComponent>) {
-    // console.log(sessionStorage.getItem('user'));
-    this.currentUser = JSON.parse(sessionStorage.getItem('user'));
     this.id_solicitante = this.currentUser.id_usuario
+  }
+
+  ngOnInit(): void {
+    this.currentUser = JSON.parse(window.sessionStorage.getItem('user'));
   }
 
   sendRequest() {

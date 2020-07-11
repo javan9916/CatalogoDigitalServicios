@@ -52,6 +52,7 @@ import {MyServicesComponent} from './components/supplier/my-services/my-services
 import {NewTagComponent} from './components/supplier/my-services/dialogs/new-tag/new-tag.component';
 import {NewServiceComponent} from './components/supplier/my-services/dialogs/new-service/new-service.component';
 import {DeleteServiceComponent} from './components/supplier/my-services/dialogs/delete-service/delete-service.component';
+import { CrudTagComponent } from './components/crud-tag/crud-tag.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import {DeleteServiceComponent} from './components/supplier/my-services/dialogs/
     NewTagComponent,
     NewServiceComponent,
     DeleteServiceComponent,
+    CrudTagComponent,
   ],
   imports: [
     BrowserModule,

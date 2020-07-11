@@ -7,7 +7,6 @@ import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { getServiceRequestsQuery, resolveServiceRequestQuery } from '../../../querys';
 import { InformationService } from '../../../services/information.service';
-import { UserService } from '../../../services/user/user.service';
 
 
 @Component({
@@ -30,33 +29,30 @@ export class ServiceRequestComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private apollo: Apollo, private informationService: InformationService,
-    private userService: UserService) { 
-      this.currentUser = this.userService.currentUserValue; 
-    }
+  constructor(private apollo: Apollo, private informationService: InformationService) {}
 
   ngOnInit(): void {
     this.state = null;
-    this.getServiceRequests(this.pageSize, 0, this.state);
+    this.getServiceRequests(this.pageSize, (this.pageSize * this.pageIndex), this.state);
   }
 
   onPageChanged(event) {
-    this.getServiceRequests(event.pageSize, event.pageIndex + 1, this.state);
+    this.getServiceRequests(event.pageSize, event.pageSize*(event.pageIndex + 1), this.state);
   }
 
   getPending() {
     this.state = 'P';
-    this.getServiceRequests(this.pageSize, this.pageIndex, this.state);
+    this.getServiceRequests(this.pageSize, (this.pageSize * this.pageIndex), this.state);
   }
 
   getAccepted() {
     this.state = 'A';
-    this.getServiceRequests(this.pageSize, this.pageIndex, this.state);
+    this.getServiceRequests(this.pageSize, (this.pageSize * this.pageIndex), this.state);
   }
 
   getRejected() {
     this.state = 'R';
-    this.getServiceRequests(this.pageSize, this.pageIndex, this.state);
+    this.getServiceRequests(this.pageSize, (this.pageSize * this.pageIndex), this.state);
   }
 
   public getServiceRequests = (quantity: number, offset: number, estado: string) => {
@@ -69,7 +65,7 @@ export class ServiceRequestComponent implements OnInit {
       if (response.code === 200) {
         this.service_request_data = response.data;
         this.dataSource.data = this.service_request_data;
-        this.dataLength = this.dataSource.data.length;
+        this.dataLength = response.count;
         this.informationService.showMessage(response.message, 'success');
       } else {
         this.informationService.showMessage(response.message, 'warn');

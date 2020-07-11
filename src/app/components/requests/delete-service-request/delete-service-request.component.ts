@@ -37,7 +37,7 @@ export class DeleteServiceRequestComponent implements OnInit {
   }
 
   onPageChanged(event) {
-    this.getDeleteServiceRequests(event.pageSize, event.pageSize*(event.pageIndex + 1), this.state);
+    this.getDeleteServiceRequests(event.pageSize, (event.pageSize * event.pageIndex), this.state);
   }
 
   getPending() {

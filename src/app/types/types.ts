@@ -131,3 +131,8 @@ export type ResponseDeleteServiceRequest = {
 export type InputTag = {
   'nombre': string
 };
+
+export type InputUpdateTag = {
+  'id_etiqueta': number,
+  'nombre': string
+};

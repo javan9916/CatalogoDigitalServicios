@@ -37,7 +37,7 @@ export class SupplierRequestComponent implements OnInit {
   }
 
   onPageChanged(event) {
-    this.getSupplierRequests(event.pageSize, event.pageSize*(event.pageIndex + 1), this.state);
+    this.getSupplierRequests(event.pageSize, (event.pageSize * event.pageIndex), this.state);
   }
 
   getPending() {

@@ -10,7 +10,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 export class DialogComponent implements OnInit {
 
   dialogForm: FormGroup;
-  
+
   locationId: number;
   locationName: string;
   locationVisible: boolean;
@@ -23,32 +23,46 @@ export class DialogComponent implements OnInit {
   marker: any;
 
   tagName: string;
-  
+  tagId: number;
+
   action: string;
+  localAction: string;
   index: number;
 
-  constructor( private formBuilder: FormBuilder, private dialogRef: MatDialogRef<DialogComponent>,
-    @Inject(MAT_DIALOG_DATA) data, public dialog: MatDialog) { 
+  constructor(private formBuilder: FormBuilder, private dialogRef: MatDialogRef<DialogComponent>,
+    @Inject(MAT_DIALOG_DATA) data, public dialog: MatDialog) {
 
-      this.action = data.action;
+    this.action = data.action;
 
-      if (this.action == 'Eliminar') {
-        this.locationId = data.id;
-        this.locationName = data.name;
-        this.index = data.index;
-      } else if (data.action == 'Editar') {
-        this.locationId = data.id;
-        this.locationName = data.name;
-        this.locationVisible = data.visible;
-        this.locationLat = data.lat;
-        this.locationLng = data.lng;
-        this.locationMarkerLat = data.lat;
-        this.locationMarkerLng = data.lng;
-        this.locationRadius = Math.round(data.radius*111000);
-        this.locationCircle = this.locationRadius;
-        this.index = data.index;
-      }
+    if (this.action == 'Eliminar') {
+      this.locationId = data.id;
+      this.locationName = data.name;
+      this.index = data.index;
+    } else if (data.action == 'Editar') {
+      this.locationId = data.id;
+      this.locationName = data.name;
+      this.locationVisible = data.visible;
+      this.locationLat = data.lat;
+      this.locationLng = data.lng;
+      this.locationMarkerLat = data.lat;
+      this.locationMarkerLng = data.lng;
+      this.locationRadius = Math.round(data.radius * 111000);
+      this.locationCircle = this.locationRadius;
+      this.index = data.index;
+    } else if (data.action == 'Editar Etiqueta') {
+      this.localAction = 'Etiqueta';
+      this.tagId = data.id;
+      this.tagName = data.tag;
+      this.index = data.index;
+    } else if (data.action == 'Eliminar Etiqueta') {
+      this.localAction = 'Etiqueta';
+      this.tagId = data.id;
+      this.tagName = data.tag;
+      this.index = data.index;
+    } else if (data.action == 'Eliminar Etiqueta') {
+      this.localAction = 'Etiqueta';
     }
+  }
 
   ngOnInit(): void {
     if (this.action == 'Eliminar') {
@@ -68,11 +82,12 @@ export class DialogComponent implements OnInit {
         marker: [this.marker],
         action: [this.action],
       });
-    } else if (this.action == 'Nueva Etiqueta') {
+    } else if (this.localAction == 'Etiqueta') {
       this.dialogForm = this.formBuilder.group({
+        id: [this.tagId],
         name: [this.tagName],
         action: [this.action],
-      })
+      });
     }
   }
 
@@ -83,18 +98,18 @@ export class DialogComponent implements OnInit {
   }
 
   onKeyup() {
-    this.locationCircle = this.locationRadius; 
+    this.locationCircle = this.locationRadius;
   }
 
   save() {
-    if (this.action == 'Nueva Etiqueta') {
+    if (this.localAction == 'Etiqueta') {
       this.dialogRef.close(this.dialogForm.value);
     } else {
       this.dialogForm.controls['lat'].setValue(this.locationMarkerLat);
       this.dialogForm.controls['lng'].setValue(this.locationMarkerLng);
       this.dialogRef.close(this.dialogForm.value);
     }
-    
+
   }
 
   close() {

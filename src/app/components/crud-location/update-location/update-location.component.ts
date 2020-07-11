@@ -35,7 +35,7 @@ export class UpdateLocationComponent implements OnInit {
   }
 
   onPageChanged(event) {
-    this.getLocations(event.pageSize, event.pageSize*(event.pageIndex + 1));
+    this.getLocations(event.pageSize, (event.pageSize * event.pageIndex));
   }
 
   public getLocations = (quantity: number, offset: number) => {

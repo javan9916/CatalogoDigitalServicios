@@ -37,7 +37,7 @@ export class ServiceRequestComponent implements OnInit {
   }
 
   onPageChanged(event) {
-    this.getServiceRequests(event.pageSize, event.pageSize*(event.pageIndex + 1), this.state);
+    this.getServiceRequests(event.pageSize, (event.pageSize * event.pageIndex), this.state);
   }
 
   getPending() {

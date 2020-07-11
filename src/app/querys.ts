@@ -516,3 +516,33 @@ export function getTagQuery() {
   }`;
 }
 
+export function getTagUpdateQuery() {
+  return `mutation modificarEtiqueta($Input: InputUpdateEtiqueta!){
+    modificarEtiqueta(input: $Input) {
+      count
+      data {
+        id_etiqueta
+        nombre
+      }
+      code
+      message
+    }
+  }`;
+}
+
+export function getTagDeleteQuery(id: number) {
+  return `mutation {
+    eliminarEtiqueta(id_etiqueta: ${id}) {
+      count
+      data {
+        id_etiqueta
+        nombre
+      }
+      code
+      message
+    }
+  }`;
+}
+
+
+

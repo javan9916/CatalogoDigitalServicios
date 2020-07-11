@@ -10,4 +10,13 @@
 .btn-request {
     margin: 15px 0 15px 15px;
 }
+
+.actions-col {
+    text-align: right !important;
+    justify-content: flex-end !important;
+}
+
+.delete-button {
+    color:#d9534f;
+}
   

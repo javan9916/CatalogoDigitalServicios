@@ -37,7 +37,7 @@ export class TagRequestComponent implements OnInit {
   }
 
   onPageChanged(event) {
-    this.getTagRequests(event.pageSize, event.pageSize*(event.pageIndex + 1), this.state);
+    this.getTagRequests(event.pageSize, (event.pageSize * event.pageIndex), this.state);
   }
 
   getPending() {

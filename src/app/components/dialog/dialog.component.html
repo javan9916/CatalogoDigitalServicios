@@ -30,6 +30,15 @@
             <input type="text" matInput placeholder="Nombre" formControlName="name">
         </mat-form-field>
     </div>
+    <div *ngIf="action == 'Editar Etiqueta'">
+        <mat-form-field>
+            <mat-label>Nombre de la Etiqueta</mat-label>
+            <input type="text" matInput placeholder="Nombre" formControlName="name">
+        </mat-form-field>
+    </div>
+    <div *ngIf="action == 'Eliminar Etiqueta'">
+        <p>¿Seguro que quiere eliminar <b>{{ tagName }}</b>?</p>
+    </div>
 </div>
 <div class="mat-dialog-actions" *ngIf="action != 'Ayuda'">
     <button mat-button mat-flat-button color="primary" (click)="save()">Sí</button>

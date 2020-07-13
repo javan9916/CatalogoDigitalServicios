@@ -9,33 +9,19 @@
     <mat-form-field class="full-field">
       <mat-label>Etiquetas</mat-label>
       <mat-select [(ngModel)]="selectedTag">
-        <mat-option *ngFor="let tag of tags" [value]="tag.id_solicitud_etiqueta">{{ tag.etiqueta }}</mat-option>
+        <mat-option *ngFor="let tag of tags" [value]="tag.id_etiqueta">{{ tag.nombre }}</mat-option>
       </mat-select>
     </mat-form-field>
-    <button mat-button class="btn-add">
+    <button mat-button class="btn-add" (click)="addTag()">
       <mat-icon>
         add_circle
       </mat-icon>
     </button>
 
     <div class="flex-centered">
-      <div class="tag">
-        Restaurante
-        <button mat-icon-button class="btn-white">
-          <mat-icon>close</mat-icon>
-        </button>
-      </div>
-
-      <div class="tag">
-        Restaurante
-        <button mat-icon-button class="btn-white">
-          <mat-icon>close</mat-icon>
-        </button>
-      </div>
-
-      <div class="tag">
-        Restaurante
-        <button mat-icon-button class="btn-white">
+      <div class="tag" *ngFor="let tag of serviceTags">
+        {{tag.nombre}}
+        <button mat-icon-button class="btn-white" (click)="removeTag(tag.id_etiqueta)">
           <mat-icon>close</mat-icon>
         </button>
       </div>
@@ -48,5 +34,4 @@
 <div mat-dialog-actions>
   <span class="spacer"></span>
   <button mat-raised-button mat-dialog-close color="warn">Cerrar</button>
-  <button mat-raised-button color="primary">Enviar</button>
 </div>

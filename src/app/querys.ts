@@ -582,5 +582,32 @@ export function getServices() {
   }`
 }
 
+export function getAllTags() {
+  return `query Etiquetas($Quantity:Int! $Offset:Int! $Nombre:String) {
+    etiquetas(quantity:$Quantity offset:$Offset nombre:$Nombre) {
+      code
+      message
+      data {
+        id_etiqueta
+        nombre
+      }
+    }
+  }`
+}
+
+export function modifyTag() {
+  return `mutation ModificarEtiquetasServicio($Id_servicio:Int! $Etiquetas:[Int]! $Add:Boolean!) {
+    modificarEtiquetasServicio(id_servicio:$Id_servicio etiquetas:$Etiquetas add:$Add) {
+      code
+      message
+      data {
+        etiquetas {
+          id_etiqueta
+          nombre
+        }
+      }
+    }
+  }`
+}
 
 

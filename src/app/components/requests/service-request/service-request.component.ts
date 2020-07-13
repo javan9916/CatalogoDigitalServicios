@@ -32,6 +32,8 @@ export class ServiceRequestComponent implements OnInit {
   constructor(private apollo: Apollo, private informationService: InformationService) {}
 
   ngOnInit(): void {
+    this.currentUser = JSON.parse(sessionStorage.getItem('user'));
+    console.log(this.currentUser);
     this.state = null;
     this.getServiceRequests(this.pageSize, (this.pageSize * this.pageIndex), this.state);
   }
@@ -77,6 +79,12 @@ export class ServiceRequestComponent implements OnInit {
   }
 
   acceptRequest(element) {
+    // const obj = {
+    //   id_solicitud_servicio: element.id_solicitud_servicio,
+    //   id_usuario: this.currentUser.id_usuario,
+    //   decision: true
+    // }
+    //console.log(obj);
     this.resolveTagRequest(element.id_solicitud_servicio, this.currentUser.id_usuario, true);
   }
 
@@ -89,6 +97,7 @@ export class ServiceRequestComponent implements OnInit {
       mutation: gql`${resolveServiceRequestQuery(id_request, id_admin, decision)}`
     }).subscribe((result: any) => {
       const response = result.data.resolverSolicitudServicio;
+      console.log(response);
       if (response.code === 200) {
         this.getServiceRequests(this.pageSize, this.pageIndex, this.state);
         this.informationService.showMessage(response.message, 'success');

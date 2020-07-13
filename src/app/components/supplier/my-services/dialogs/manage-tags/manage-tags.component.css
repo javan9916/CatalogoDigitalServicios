@@ -1,0 +1,91 @@
+h1 {
+  margin-bottom: 0;
+}
+
+.subtitle {
+  color: gray;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 24px 0 12px 0;
+}
+
+.form-field {
+  width: 100%
+}
+
+.action-btns {
+  display: flex;
+}
+
+.spacer {
+  flex-grow: 1;
+}
+
+.map {
+  height: 300px;
+  width: 100%;
+}
+
+.map-container {
+  margin: 15px 0;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  justify-items: center;
+}
+
+.form-field {
+  width: 45%;
+  min-width: 45%;
+  margin: 15px 15px 0 15px;
+}
+
+.form-id {
+  width: 20%;
+  min-width: 20%;
+  margin: 15px 15px 0 15px;
+}
+
+.form-desc {
+  width: 95%;
+  margin-bottom: 15px;
+}
+
+.btn-add {
+  color: green;
+}
+
+.full-field {
+  width: 80%;
+}
+
+.tag {
+  display: inline;
+  /*border: gray 1px solid;*/
+  border-radius: 15px;
+  padding: 10px;
+  color: white;
+  background: #3c3c3c;
+  margin: 5px;
+}
+
+.btn-white {
+  height: 24px;
+  width: 24px;
+  line-height: 24px;
+  color: white
+}
+
+.flex-centered {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}

@@ -53,6 +53,9 @@ import {NewTagComponent} from './components/supplier/my-services/dialogs/new-tag
 import {NewServiceComponent} from './components/supplier/my-services/dialogs/new-service/new-service.component';
 import {DeleteServiceComponent} from './components/supplier/my-services/dialogs/delete-service/delete-service.component';
 import { CrudTagComponent } from './components/crud-tag/crud-tag.component';
+import {ModifyServiceComponent} from './components/supplier/my-services/dialogs/modify-service/modify-service.component';
+import {ManageTagsComponent} from './components/supplier/my-services/dialogs/manage-tags/manage-tags.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -79,6 +82,8 @@ import { CrudTagComponent } from './components/crud-tag/crud-tag.component';
     NewServiceComponent,
     DeleteServiceComponent,
     CrudTagComponent,
+    ModifyServiceComponent,
+    ManageTagsComponent,
   ],
   imports: [
     BrowserModule,
@@ -106,13 +111,15 @@ import { CrudTagComponent } from './components/crud-tag/crud-tag.component';
     MatTableModule,
     HttpClientModule,     // Necesario para poder usar HttpLinkModule
     ApolloModule,         // Modulo principal de Apollo
-    HttpLinkModule, LayoutModule, MatListModule,       // Necesario para obtener datos
+    HttpLinkModule, LayoutModule, MatListModule, MatSelectModule,       // Necesario para obtener datos
   ],
   entryComponents: [
     RequestProviderComponent,
     NewTagComponent,
     NewServiceComponent,
     DeleteServiceComponent,
+    ModifyServiceComponent,
+    ManageTagsComponent,
   ],
   providers: [InformationService],
   bootstrap: [AppComponent]

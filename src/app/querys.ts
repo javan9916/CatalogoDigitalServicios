@@ -17,6 +17,8 @@ export function getLoginQuery(correoUsuario: string, passwordUsuario: string) {
           id_servicio
           nombre
           cedula_j
+          visible
+          descripcion
         }
       }
     }
@@ -542,6 +544,42 @@ export function getTagDeleteQuery(id: number) {
       message
     }
   }`;
+}
+
+export function modifyServiceQuery() {
+  return `mutation ModificarServicio($Input: InputUpdateServicio!) {
+    modificarServicio(input: $Input) {
+      code
+      message
+    }
+  }`
+}
+
+export function getServices() {
+  return `query Servicios($Quantity:Int! $Offset:Int! $Encargado:Int $Localizacion:Int $Nombre:String $Visible:Boolean) {
+    servicios(quantity:$Quantity offset:$Offset id_encargado:$Encargado id_localizazion:$Localizacion nombre:$Nombre visible:$Visible) {
+      code
+      message
+      data {
+        id_servicio
+        cedula_j
+        nombre
+        descripcion
+        latitud
+        longitud
+        ubicacion
+        visible
+        encargados {
+          id_usuario
+          nombre
+        }
+        etiquetas {
+          id_etiqueta
+          nombre
+        }
+      }
+    }
+  }`
 }
 
 

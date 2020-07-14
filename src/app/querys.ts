@@ -505,6 +505,20 @@ export function getDeleteRequestService() {
   }`;
 }
 
+export function getTags(quantity: number, offset: number) {
+  return `query etiquetas {
+    etiquetas(quantity: ${quantity} offset: ${offset}){
+      count
+      data {
+        id_etiqueta
+        nombre
+      }
+      code
+      message
+    }
+  }`
+}
+
 export function getTagQuery() {
   return `mutation agregarEtiqueta($Input: InputEtiqueta!){
     agregarEtiqueta(input: $Input) {
@@ -609,5 +623,33 @@ export function modifyTag() {
     }
   }`
 }
+
+export function getLocationServices(quantity: number, offset: number, id_localizacion: number) {
+  return `query {
+    servicios (quantity: ${quantity} offset: ${offset} id_localizacion: ${id_localizacion}){
+      count
+      data{
+        id_servicio
+        nombre
+        cedula_j
+        localizacion {
+          id_localizacion
+          nombre
+        }
+        latitud
+        longitud
+        encargados {
+          id_usuario
+          nombre
+        }
+        etiquetas {
+          id_etiqueta
+          nombre
+        }
+      }
+    }
+  }`
+}
+
 
 

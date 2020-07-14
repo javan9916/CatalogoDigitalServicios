@@ -1,19 +1,40 @@
-<div class="container">
+<mat-toolbar color="primary">
+  <button mat-flat-button class="mainButton" color="primary" (click)="onHomeClick()">
+    Catálogo Digital de Servicios
+  </button>
+  <span class="spacer"></span>
+  <ng-container *ngIf="(isLoggedIn()) && (currentUser != null)">
+    <div class="name">
+      {{ currentUser.nombre }}
+    </div>
+  </ng-container>
+</mat-toolbar>
 
-  <div class="map-container">
+<div class="row">
+  <div class="column">
+    <h3 class="services">Servicios en {{  locationName  }}</h3>
+
+    <div class="services" *ngFor="let service of services">
+      <mat-card>
+        <mat-card-title> {{ service.nombre }} </mat-card-title>
+        <mat-card-content>
+          Cédula Jurídica: {{ service.cedula_j }}
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="column">
     <agm-map class="map" [latitude]="maplat" [longitude]="maplng">
       <agm-marker [latitude]="markerlat" [longitude]="markerlng"></agm-marker>
 
-      <agm-circle [latitude]="markerlat" [longitude]="markerlng"
-      [radius]="radius" fillColor="steelblue" fillOpacity="0.5">
+      <div *ngFor="let service of services">
+        <agm-marker [latitude]="service.latitud" [longitude]="service.longitud"></agm-marker>
+      </div>
+
+      <agm-circle [latitude]="markerlat" [longitude]="markerlng" [radius]="radius" fillColor="steelblue"
+        fillOpacity="0.5">
       </agm-circle>
     </agm-map>
   </div>
-
-  <div class="flex-centered">
-
-    <h3>Servicios en {{  locationName  }}</h3>
-
-  </div>
-
 </div>

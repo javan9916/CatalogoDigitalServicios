@@ -3,12 +3,12 @@ import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { DialogComponent } from '../dialog/dialog.component'
-import { InputTag, Usuario, ResponseTagRequest, InputUpdateTag } from '../../types/types'
+import { InputTag, Usuario, ResponseTag, Tag } from '../../types/types'
 
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { InformationService } from '../../services/information.service';
-import { getTagQuery, getTagRequestsQuery, getTagUpdateQuery, getTagDeleteQuery } from '../../querys';
+import { getTagQuery, getTags, getTagUpdateQuery, getTagDeleteQuery } from '../../querys';
 
 @Component({
   selector: 'app-crud-tag',
@@ -22,11 +22,9 @@ export class CrudTagComponent implements OnInit {
   currentUser: Usuario;
 
   displayedColumns: string[] = ['id', 'tag', 'action'];
-  tag_request_data: any = [];
-  dataSource = new MatTableDataSource(this.tag_request_data);
+  tag_data: any = [];
+  dataSource = new MatTableDataSource(this.tag_data);
   dataLength: number = 0;
-
-  state: string;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -36,24 +34,24 @@ export class CrudTagComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(window.sessionStorage.getItem('user'));
-    this.state = 'A';
-    this.getTagRequests(this.pageSize, (this.pageSize * this.pageIndex), this.state);
+    this.getTagRequests(this.pageSize, (this.pageSize * this.pageIndex));
   }
 
   onPageChanged(event) {
-    this.getTagRequests(event.pageSize, (event.pageSize * event.pageIndex), this.state);
+    this.getTagRequests(event.pageSize, (event.pageSize * event.pageIndex));
   }
 
-  public getTagRequests = (quantity: number, offset: number, estado: string) => {
-    this.tag_request_data = [];
+  public getTagRequests = (quantity: number, offset: number) => {
+    this.tag_data = [];
 
     this.apollo.query({
-      query: gql`${getTagRequestsQuery(quantity, offset, estado)}`,
+      query: gql`${getTags(quantity, offset)}`,
     }).subscribe((result: any) => {
-      const response: ResponseTagRequest = result.data.solicitudesEtiqueta;
+      const response: ResponseTag = result.data.etiquetas;
       if (response.code === 200) {
-        this.tag_request_data = response.data;
-        this.dataSource.data = this.tag_request_data;
+        console.log(response);
+        this.tag_data = response.data;
+        this.dataSource.data = this.tag_data;
         this.dataLength = response.count;
         this.informationService.showMessage(response.message, 'success');
       } else {
@@ -64,7 +62,6 @@ export class CrudTagComponent implements OnInit {
       this.informationService.showMessage('No se han encontrado las solicitudes ', 'warn');
     });
   }
-
 
   openDialog(element, action, index) {
     const dialogConfig = new MatDialogConfig();
@@ -84,15 +81,15 @@ export class CrudTagComponent implements OnInit {
       dialogConfig.data = {
         action: action,
         index: index,
-        tag: element.etiqueta,
-        id: element.id_solicitud_etiqueta,
+        tag: element.nombre,
+        id: element.id_etiqueta,
       }
     } else if (action == 'Eliminar Etiqueta') {
       dialogConfig.data = {
         action: action,
         index: index,
-        tag: element.etiqueta,
-        id: element.id_solicitud_etiqueta,
+        tag: element.nombre,
+        id: element.id_etiqueta,
       }
     }
 
@@ -106,10 +103,10 @@ export class CrudTagComponent implements OnInit {
           };
           this.createTag(inputTag);
         } else if (data.action == 'Editar Etiqueta') {
-          const inputTag: InputUpdateTag = {
+          const inputTag: Tag = {
             id_etiqueta: data.id,
             nombre: data.name
-          }
+          };
           this.updateTag(inputTag);
         } else if (data.action == 'Eliminar Etiqueta') {
           this.deleteTag(data.id);
@@ -135,7 +132,7 @@ export class CrudTagComponent implements OnInit {
     });
   }
 
-  public updateTag = (inputTag: InputUpdateTag) => {
+  public updateTag = (inputTag: Tag) => {
     this.apollo.mutate({
       mutation: gql`${getTagUpdateQuery()}`,
       variables: { Input: inputTag }

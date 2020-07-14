@@ -11,14 +11,14 @@
     <ng-container matColumnDef="id">
         <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
         <mat-cell *matCellDef="let row">
-            {{row.id_solicitud_etiqueta}} </mat-cell>
+            {{row.id_etiqueta}} </mat-cell>
     </ng-container>
 
     <!-- Columna etiqueta -->
     <ng-container matColumnDef="tag">
         <mat-header-cell *matHeaderCellDef> Etiqueta </mat-header-cell>
         <mat-cell *matCellDef="let row">
-            {{row.etiqueta}} </mat-cell>
+            {{row.nombre}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="action">

@@ -11,8 +11,27 @@ import { SignupComponent } from './components/signup/signup.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { LocationsComponent } from './components/locations/locations.component';
 import { CreateLocationComponent } from './components/crud-location/create-location/create-location.component';
+import { UpdateLocationComponent } from './components/crud-location/update-location/update-location.component';
+import { CrudLocationComponent } from './components/crud-location/crud-location.component';
+import { LocationComponent } from './components/location/location.component';
+import { DialogComponent } from './components/dialog/dialog.component';
+import { RequestsComponent } from './components/requests/requests.component';
+import { SupplierRequestComponent } from './components/requests/supplier-request/supplier-request.component';
+import { TagRequestComponent } from './components/requests/tag-request/tag-request.component';
+import { ServiceRequestComponent } from './components/requests/service-request/service-request.component';
+import { DeleteServiceRequestComponent } from './components/requests/delete-service-request/delete-service-request.component';
+import { RequestProviderComponent } from './components/main/dialogs/requestProvider/requestProvider.component';
+import { SupplierComponent } from './components/supplier/supplier.component';
+import { MyServicesComponent } from './components/supplier/my-services/my-services.component';
+import { NewTagComponent } from './components/supplier/my-services/dialogs/new-tag/new-tag.component';
+import { NewServiceComponent } from './components/supplier/my-services/dialogs/new-service/new-service.component';
+import { DeleteServiceComponent } from './components/supplier/my-services/dialogs/delete-service/delete-service.component';
+import { CrudTagComponent } from './components/crud-tag/crud-tag.component';
+import { ModifyServiceComponent } from './components/supplier/my-services/dialogs/modify-service/modify-service.component';
+import { ManageTagsComponent } from './components/supplier/my-services/dialogs/manage-tags/manage-tags.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+// Material
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -28,6 +47,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatListModule } from '@angular/material/list';
+import { MatSelectModule } from '@angular/material/select';
 
 // Modules needed for GraphQL
 import { HttpClientModule } from '@angular/common/http';
@@ -36,26 +57,7 @@ import { HttpLink, HttpLinkModule } from 'apollo-angular-link-http';
 import { InformationService } from './services/information.service';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatListModule } from '@angular/material/list';
-import { UpdateLocationComponent } from './components/crud-location/update-location/update-location.component';
-import { CrudLocationComponent } from './components/crud-location/crud-location.component';
-import { LocationComponent } from './components/location/location.component';
-import { DialogComponent } from './components/dialog/dialog.component';
-import { RequestsComponent } from './components/requests/requests.component';
-import { SupplierRequestComponent } from './components/requests/supplier-request/supplier-request.component';
-import { TagRequestComponent } from './components/requests/tag-request/tag-request.component';
-import { ServiceRequestComponent } from './components/requests/service-request/service-request.component';
-import { DeleteServiceRequestComponent } from './components/requests/delete-service-request/delete-service-request.component';
-import { RequestProviderComponent } from './components/main/dialogs/requestProvider/requestProvider.component';
-import {SupplierComponent} from './components/supplier/supplier.component';
-import {MyServicesComponent} from './components/supplier/my-services/my-services.component';
-import {NewTagComponent} from './components/supplier/my-services/dialogs/new-tag/new-tag.component';
-import {NewServiceComponent} from './components/supplier/my-services/dialogs/new-service/new-service.component';
-import {DeleteServiceComponent} from './components/supplier/my-services/dialogs/delete-service/delete-service.component';
-import { CrudTagComponent } from './components/crud-tag/crud-tag.component';
-import {ModifyServiceComponent} from './components/supplier/my-services/dialogs/modify-service/modify-service.component';
-import {ManageTagsComponent} from './components/supplier/my-services/dialogs/manage-tags/manage-tags.component';
-import {MatSelectModule} from '@angular/material/select';
+
 
 @NgModule({
   declarations: [

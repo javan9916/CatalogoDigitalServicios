@@ -18,8 +18,8 @@ const routes: Routes = [
   { path: 'main', component: MainComponent, children: [
       { path: '', redirectTo: 'locations', pathMatch: 'full' },
       { path: 'locations', component: LocationsComponent },
-      { path: 'location', component: LocationComponent }
     ] },
+  { path: 'location', component: LocationComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'admin', component: AdminComponent, children: [

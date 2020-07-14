@@ -1,4 +1,5 @@
 import {coerceNumberProperty} from '@angular/cdk/coercion';
+import { UserInfo } from 'os';
 
 export type Usuario = {
   'id_usuario': number;
@@ -27,13 +28,14 @@ export type InputUsuario = {
 };
 
 export type Localizacion = {
-  'idLocalizacion': number,
+  'id_localizacion': number,
   'nombre': string,
   'geofence': string,
   'visible': boolean,
   'latitud': number,
   'longitud': number,
-  'radio': number
+  'radio': number,
+  'catalogo': Service,
 };
 
 export type ResponseLocalizacion = {
@@ -128,11 +130,39 @@ export type ResponseDeleteServiceRequest = {
   'message': string,
 };
 
+export type ResponseTag = {
+  'count': number,
+  'data': Tag,
+  'code': number,
+  'message': string
+}
+
 export type InputTag = {
   'nombre': string
 };
 
-export type InputUpdateTag = {
+export type Tag = {
   'id_etiqueta': number,
   'nombre': string
+};
+
+export type Service = {
+  'id_servicio': number,
+  'cedula_j': string,
+  'nombre': string,
+  'descripcion': string,
+  'localizacion': Localizacion,
+  'latitud': number,
+  'longitud': number,
+  'ubicacion': string,
+  'visible': boolean,
+  'encargados': Usuario,
+  'etiquetas': Tag,
+};
+
+export type ResponseService = {
+  'count': number,
+  'data': Service,
+  'code': number,
+  'message': string
 };

@@ -78,10 +78,12 @@ export class DeleteServiceRequestComponent implements OnInit {
 
   acceptRequest(element) {
     this.resolveTagRequest(element.id_solicitud_eliminacion, this.currentUser.id_usuario, true);
+    window.location.reload();
   }
 
   rejectRequest(element) {
     this.resolveTagRequest(element.id_solicitud_eliminacion, this.currentUser.id_usuario, false);
+    window.location.reload();
   }
 
   public resolveTagRequest = (id_request: number, id_admin: number, decision: boolean) => {

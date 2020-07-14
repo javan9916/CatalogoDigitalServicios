@@ -86,10 +86,12 @@ export class ServiceRequestComponent implements OnInit {
     // }
     //console.log(obj);
     this.resolveTagRequest(element.id_solicitud_servicio, this.currentUser.id_usuario, true);
+    window.location.reload();
   }
 
   rejectRequest(element) {
     this.resolveTagRequest(element.id_solicitud_servicio, this.currentUser.id_usuario, false);
+    window.location.reload();
   }
 
   public resolveTagRequest = (id_request: number, id_admin: number, decision: boolean) => {

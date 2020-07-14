@@ -26,8 +26,6 @@
 
   <div class="column">
     <agm-map class="map" [latitude]="maplat" [longitude]="maplng">
-      <agm-marker [latitude]="markerlat" [longitude]="markerlng"></agm-marker>
-
       <div *ngFor="let service of services">
         <agm-marker [latitude]="service.latitud" [longitude]="service.longitud"></agm-marker>
       </div>

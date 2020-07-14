@@ -647,6 +647,8 @@ export function getLocationServices(quantity: number, offset: number, id_localiz
           nombre
         }
       }
+      code
+      message
     }
   }`
 }

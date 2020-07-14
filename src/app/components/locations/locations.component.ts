@@ -46,6 +46,6 @@ export class LocationsComponent implements OnInit {
 
   public onClick(location) {
     sessionStorage.setItem('location', JSON.stringify(location));
-    this.router.navigate(['location']);
+    this.router.navigate(['/location']);
   }
 }

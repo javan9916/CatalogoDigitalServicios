@@ -75,6 +75,8 @@ export class MyServicesComponent implements OnInit{
       data: {
         id_servicio: id_servicio
       }
+    }).afterClosed().subscribe(res => {
+      window.location.reload();
     });
   }
 
@@ -96,6 +98,8 @@ export class MyServicesComponent implements OnInit{
         service: service
       },
       width: '400px'
+    }).afterClosed().subscribe(res => {
+      window.location.reload();
     })
   }
 }

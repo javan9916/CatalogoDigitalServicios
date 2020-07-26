@@ -654,5 +654,50 @@ export function getLocationServices(quantity: number, offset: number, id_localiz
   }`
 }
 
+export function getSupplierServices(quantity: number, offset: number, id_encargado: number) {
+  return `query {
+    servicios (quantity: ${quantity} offset: ${offset} id_encargado: ${id_encargado}){
+      count
+      data{
+        id_servicio
+        nombre
+        cedula_j
+      }
+      code
+      message
+    }
+  }`
+}
+
+export function getUsersByType(quantity: number, offset: number, tipo: number) {
+  return `query usuarios {
+    usuarios (quantity: ${quantity} offset: ${offset} tipo: ${tipo}){
+      count
+      data {
+        nombre
+        id_usuario
+      }
+      code
+      message
+    }
+  }`
+}
+
+export function updateServiceSupplier(id_servicio: number, id_encargado: number, add: boolean) {
+  return `mutation {
+    modificarEncargadoServicio (id_servicio: ${id_servicio} id_encargado: ${id_encargado} add: ${add}){
+      count
+      data {
+        id_servicio
+        nombre
+        cedula_j
+      }
+      code
+      message
+    }
+  }`
+}
+
+
 
 

@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Desvincularme de Proveedor</h2>
+
+<div mat-dialog-content class="container">
+  <p>¿Seguro que quiere desvincularse de <strong>{{ service.nombre }}?</strong></p>
+</div>
+
+<div mat-dialog-actions>
+  <span class="spacer"></span>
+  <button mat-raised-button mat-dialog-close color="warn">Cerrar</button>
+  <button mat-raised-button color="primary" (click)="updateSuppliers(service_id, supplier)">Sí</button>
+</div>

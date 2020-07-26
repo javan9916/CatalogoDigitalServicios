@@ -25,6 +25,7 @@ export class DeleteServiceComponent {
     this.id_servicio = data.id_servicio;
     console.log(this.id_servicio);
   }
+
   sendRequest() {
     if (this.id_solicitante === undefined || this.id_servicio === undefined || this.justificacion === undefined) {
       this.informationService.showMessage('Es necesario completar todos los campos', 'warn');
@@ -35,7 +36,7 @@ export class DeleteServiceComponent {
       id_servicio: this.id_servicio,
       justificacion: this.justificacion
     }
-    console.log(Input);
+    
     this.apollo.mutate({
       mutation: gql `${getDeleteRequestService()}`,
       variables: {Input: Input}

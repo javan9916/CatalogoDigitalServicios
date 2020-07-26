@@ -27,6 +27,8 @@ import { NewTagComponent } from './components/supplier/my-services/dialogs/new-t
 import { NewServiceComponent } from './components/supplier/my-services/dialogs/new-service/new-service.component';
 import { DeleteServiceComponent } from './components/supplier/my-services/dialogs/delete-service/delete-service.component';
 import { CrudTagComponent } from './components/crud-tag/crud-tag.component';
+import { ServiceComponent } from './components/service/service.component';
+import { NewSupplierComponent } from './components/supplier/my-services/dialogs/new-supplier/new-supplier.component';
 import { ModifyServiceComponent } from './components/supplier/my-services/dialogs/modify-service/modify-service.component';
 import { ManageTagsComponent } from './components/supplier/my-services/dialogs/manage-tags/manage-tags.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -58,7 +60,7 @@ import { HttpLink, HttpLinkModule } from 'apollo-angular-link-http';
 import { InformationService } from './services/information.service';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { LayoutModule } from '@angular/cdk/layout';
-import { ServiceComponent } from './components/service/service.component';
+import { DeleteSupplierComponent } from './components/supplier/my-services/dialogs/delete-supplier/delete-supplier.component';
 
 
 @NgModule({
@@ -89,6 +91,8 @@ import { ServiceComponent } from './components/service/service.component';
     ModifyServiceComponent,
     ManageTagsComponent,
     ServiceComponent,
+    NewSupplierComponent,
+    DeleteSupplierComponent,
   ],
   imports: [
     BrowserModule,

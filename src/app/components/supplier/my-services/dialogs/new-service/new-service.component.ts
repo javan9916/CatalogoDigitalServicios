@@ -29,12 +29,14 @@ export class NewServiceComponent {
     this.id_solicitante = this.currentUser.id_usuario;
     console.log(this.id_solicitante)
   }
+
   onMapClicked(event) {
     console.log(event);
     this.markerlat = event.coords.lat;
     this.markerlng = event.coords.lng;
     this.onChosen = true;
   }
+
   sendRequest() {
     if (this.id_solicitante === undefined || this.descripcion === undefined || this.nombre === undefined || this.cedula_j === undefined
       || this.markerlng === undefined || this.markerlat === undefined) {
@@ -50,13 +52,14 @@ export class NewServiceComponent {
       longitud: this.markerlng,
       visible: true
     }
+    console.log(Input);
+
     this.apollo.mutate({
       mutation: gql `${getCreateRequestService()}`,
       variables: {Input: Input}
     }).subscribe((result:any) => {
       const response = result.data.crearSolicitudServicio;
       console.log(response);
-      console.log(response.code)
       if (response.code === 200) {
         this.informationService.showMessage(response.message, 'success');
         this.dialogRef.close();

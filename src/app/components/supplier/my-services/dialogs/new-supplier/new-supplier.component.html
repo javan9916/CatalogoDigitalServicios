@@ -1,0 +1,21 @@
+<h3 mat-dialog-title> <strong> Nuevo Encargado </strong> </h3>
+<div mat-dialog-content [formGroup]="supplierForm">
+    <mat-form-field class="form-select">
+        <mat-label>Usuario</mat-label>
+        <mat-select formControlName="supplier">
+            <mat-option *ngFor="let sup of suppliers" [value]="sup">{{ sup.nombre }}</mat-option>
+          </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="form-select">
+        <mat-label>Servicio</mat-label>
+        <mat-select formControlName="service">
+            <mat-option *ngFor="let serv of services" [value]="serv">{{ serv.nombre }}</mat-option>
+          </mat-select>
+    </mat-form-field>
+    
+</div>
+<div class="mat-dialog-actions">
+    <button mat-button mat-flat-button class="cancel-button" (click)="close()" color="warn">Cancelar</button>
+    <button mat-button mat-flat-button class="add-button" color="primary" (click)="save()">Agregar</button>
+</div>

@@ -14,12 +14,21 @@
   <div class="column">
     <h3 class="services">Servicios en {{  locationName  }}</h3>
 
-    <div class="services" *ngFor="let service of services">
+    <div class="services" *ngFor="let service of services, let i = index">
       <mat-card>
-        <mat-card-title> {{ service.nombre }} </mat-card-title>
+        <mat-card-title-group>
+          <mat-card-title> {{ service.nombre }} </mat-card-title>
+          <div fxFlex></div>
+          <button mat-flat-button class="card-right" color="primary" (click)="goService(service)">Ver</button>
+        </mat-card-title-group>
         <mat-card-content>
           Cédula Jurídica: {{ service.cedula_j }}
         </mat-card-content>
+        <mat-chip-list  >
+          <mat-chip *ngFor="let tag of service.etiquetas" color="primary" selected>
+            {{ tag.nombre }}
+          </mat-chip>
+        </mat-chip-list>
       </mat-card>
     </div>
   </div>

@@ -49,6 +49,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
+import { MatChipsModule } from '@angular/material/chips';
 
 // Modules needed for GraphQL
 import { HttpClientModule } from '@angular/common/http';
@@ -57,6 +58,7 @@ import { HttpLink, HttpLinkModule } from 'apollo-angular-link-http';
 import { InformationService } from './services/information.service';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { LayoutModule } from '@angular/cdk/layout';
+import { ServiceComponent } from './components/service/service.component';
 
 
 @NgModule({
@@ -86,6 +88,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     CrudTagComponent,
     ModifyServiceComponent,
     ManageTagsComponent,
+    ServiceComponent,
   ],
   imports: [
     BrowserModule,
@@ -110,6 +113,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatPaginatorModule,
     MatButtonToggleModule,
     MatDialogModule,
+    MatChipsModule,
     MatTableModule,
     HttpClientModule,     // Necesario para poder usar HttpLinkModule
     ApolloModule,         // Modulo principal de Apollo

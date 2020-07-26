@@ -1,0 +1,43 @@
+<mat-toolbar color="primary">
+    <button mat-flat-button class="mainButton" color="primary" (click)="onHomeClick()">
+      Catálogo Digital de Servicios
+    </button>
+    <span class="spacer"></span>
+    <ng-container *ngIf="(isLoggedIn()) && (currentUser != null)">
+      <div class="name">
+        {{ currentUser.nombre }}
+      </div>
+    </ng-container>
+  </mat-toolbar>
+
+  <div class="row">
+    <div class="column">
+      <mat-card>
+        <mat-card-title>
+          {{ serviceName }}
+        </mat-card-title>
+        <mat-card-subtitle> Cédula Jurídica: {{ serviceCJ }} </mat-card-subtitle>
+        <mat-card-content>
+          <mat-chip-list  >
+            <mat-chip *ngFor="let tag of service.etiquetas" color="primary" selected>
+              {{ tag.nombre }}
+            </mat-chip>
+          </mat-chip-list>
+          <mat-list>
+            <div mat-subheader>Encargados</div>
+            <mat-list-item *ngFor="let encargado of service.encargados">
+              <mat-icon mat-list-icon>account_circle</mat-icon>
+              <div mat-line>{{ encargado.nombre }}</div>
+              <div mat-line> {{ encargado.cedula }} </div>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  
+    <div class="column">
+      <agm-map class="map" [latitude]="maplat" [longitude]="maplng">
+        <agm-marker [latitude]="markerlat" [longitude]="markerlng"></agm-marker>
+      </agm-map>
+    </div>
+  </div>

@@ -641,6 +641,7 @@ export function getLocationServices(quantity: number, offset: number, id_localiz
         encargados {
           id_usuario
           nombre
+          cedula
         }
         etiquetas {
           id_etiqueta

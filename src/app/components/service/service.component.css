@@ -1,0 +1,38 @@
+.mainButton {
+    font-size: 20px;
+  }
+  
+.map {
+    height: 100%;
+    width: 100%;
+}
+  
+.spacer {
+    flex: 1 1 auto;
+}
+  
+h3 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #333;
+    font-size: 30px;
+    text-transform: uppercase;
+}
+  
+.services {
+    padding: 2%;
+}
+  
+.row {
+    display: flex;
+    height: 100%;
+}
+  
+.column {
+    flex: 50%;
+}
+
+mat-card {
+    margin: 2%;
+}
+  

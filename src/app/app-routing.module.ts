@@ -12,6 +12,7 @@ import { RequestsComponent } from './components/requests/requests.component';
 import { SupplierComponent } from './components/supplier/supplier.component';
 import { MyServicesComponent } from './components/supplier/my-services/my-services.component';
 import { CrudTagComponent } from './components/crud-tag/crud-tag.component';
+import { ServiceComponent } from './components/service/service.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
@@ -20,6 +21,7 @@ const routes: Routes = [
       { path: 'locations', component: LocationsComponent },
     ] },
   { path: 'location', component: LocationComponent },
+  { path: 'service', component: ServiceComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'admin', component: AdminComponent, children: [

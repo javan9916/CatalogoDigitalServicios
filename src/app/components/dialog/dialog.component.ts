@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dialog',
@@ -59,8 +59,8 @@ export class DialogComponent implements OnInit {
       this.tagId = data.id;
       this.tagName = data.tag;
       this.index = data.index;
-    } else if (data.action == 'Eliminar Etiqueta') {
-      this.localAction = 'Etiqueta';
+    } else if (data.action == 'Nueva Etiqueta') {
+      this.localAction = 'NEtiqueta';
     }
   }
 
@@ -80,6 +80,11 @@ export class DialogComponent implements OnInit {
         lng: [this.locationLng],
         radius: [this.locationCircle],
         marker: [this.marker],
+        action: [this.action],
+      });
+    } else if (this.localAction == 'NEtiqueta') {
+      this.dialogForm = this.formBuilder.group({
+        name: [, Validators.required],
         action: [this.action],
       });
     } else if (this.localAction == 'Etiqueta') {
@@ -102,14 +107,13 @@ export class DialogComponent implements OnInit {
   }
 
   save() {
-    if (this.localAction == 'Etiqueta') {
+    if (this.localAction == 'Etiqueta' || this.localAction == 'NEtiqueta') {
       this.dialogRef.close(this.dialogForm.value);
     } else {
       this.dialogForm.controls['lat'].setValue(this.locationMarkerLat);
       this.dialogForm.controls['lng'].setValue(this.locationMarkerLng);
       this.dialogRef.close(this.dialogForm.value);
     }
-
   }
 
   close() {

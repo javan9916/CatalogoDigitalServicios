@@ -13,6 +13,7 @@ import { InformationService } from '../../services/information.service';
 })
 export class LocationComponent implements OnInit {
   services: any = [];
+  service_tags: any = [];
 
   maplat = 9.937236533452204;
   maplng = -84.09428348902404;
@@ -70,4 +71,9 @@ export class LocationComponent implements OnInit {
     });
   }
 
+  goService(service) {
+    console.log(service)
+    sessionStorage.setItem('service', JSON.stringify(service));
+    this.router.navigate(['/service']);
+  }
 }

@@ -698,6 +698,15 @@ export function updateServiceSupplier(id_servicio: number, id_encargado: number,
   }`
 }
 
+export function getDeleteUser() {
+  return `mutation EliminarUsuario($ID:Int!) {
+    eliminarUsuario(id_usuario: $ID){
+      code
+      message
+    }
+  }`
+}
+
 
 
 

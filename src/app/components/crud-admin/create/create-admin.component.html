@@ -1,0 +1,55 @@
+<h1 mat-dialog-title>Crear Administrador</h1>
+<p class="subtitle">¡Todos los campos son obligatorios!</p>
+
+<mat-divider></mat-divider>
+
+<div mat-dialog-content>
+  <form [formGroup]="createAdmin" autocomplete="off">
+
+
+    <mat-form-field appearance="outline" class="form-field-name">
+      <mat-label>Nombre Completo</mat-label>
+      <input matInput type="text" placeholder="Nombre Completo" formControlName="name" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field-id">
+      <mat-label>Cédula</mat-label>
+      <input matInput type="text" placeholder="Cédula" formControlName="id" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field-email">
+      <mat-label>Correo Electrónico</mat-label>
+      <input matInput type="text" placeholder="Correo Electrónico" formControlName="email" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field-phone">
+      <mat-label>Teléfono</mat-label>
+      <input matInput type="text" placeholder="Teléfono" formControlName="phone" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field-pass1">
+      <mat-label>Contraseña</mat-label>
+      <input matInput placeholder="Contraseña" [type]="hide ? 'password' : 'text'" formControlName="password1" required>
+      <button mat-icon-button matSuffix (click)="hide = !hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field-pass2">
+      <mat-label>Confirmar Contraseña</mat-label>
+      <input matInput placeholder="Confirmar Contraseña" [type]="hide ? 'password' : 'text'" formControlName="password2" required>
+      <button mat-icon-button matSuffix (click)="hide = !hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+
+  </form>
+</div>
+
+<mat-divider></mat-divider>
+
+<div mat-dialog-actions>
+  <span class="spacer"></span>
+  <button mat-raised-button color="primary" [disabled]="!createAdmin.valid" (click)="onSubmit()">Agregar</button>
+  <button mat-raised-button mat-dialog-close color="warn">Cerrar</button>
+</div>

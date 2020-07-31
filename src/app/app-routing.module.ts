@@ -13,6 +13,7 @@ import { SupplierComponent } from './components/supplier/supplier.component';
 import { MyServicesComponent } from './components/supplier/my-services/my-services.component';
 import { CrudTagComponent } from './components/crud-tag/crud-tag.component';
 import { ServiceComponent } from './components/service/service.component';
+import {CrudAdminComponent} from './components/crud-admin/crud-admin.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
@@ -27,7 +28,8 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent, children: [
     { path: 'crud_location', component: CrudLocationComponent },
     { path: 'requests', component: RequestsComponent },
-    { path: 'crud_tag', component: CrudTagComponent }
+    { path: 'crud_tag', component: CrudTagComponent },
+      { path: 'crud_adm', component: CrudAdminComponent },
   ]},
   { path: 'supplier', component: SupplierComponent, children: [
       { path: 'services', component: MyServicesComponent }

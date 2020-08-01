@@ -11,6 +11,7 @@ import { InformationService } from '../../services/information.service';
   templateUrl: './services.component.html',
   styleUrls: ['./services.component.css']
 })
+
 export class ServicesComponent implements OnInit {
   locationData: any = [];
   serviceData: any = [];

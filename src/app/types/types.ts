@@ -35,7 +35,7 @@ export type Localizacion = {
   'latitud': number,
   'longitud': number,
   'radio': number,
-  'catalogo': Service,
+  'catalogo': Service
 };
 
 export type ResponseLocalizacion = {

@@ -22,12 +22,12 @@ export class LocationsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getLocations(0, 0);
+    this.getLocations(0, 0, true);
   }
 
-  public getLocations = (quantity: number, offset: number) => {
+  public getLocations = (quantity: number, offset: number, visible: boolean) => {
     this.apollo.query({
-      query: gql `${getLocationsQuery(quantity, offset)}`
+      query: gql `${getLocationsQuery(quantity, offset, visible)}`
     }).subscribe((result: any) => {
       const response: ResponseLocalizacion = result.data.localizaciones;
       if (response.code === 200) {

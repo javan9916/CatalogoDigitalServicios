@@ -72,7 +72,6 @@ export class LocationComponent implements OnInit {
   }
 
   goService(service) {
-    console.log(service)
     sessionStorage.setItem('service', JSON.stringify(service));
     this.router.navigate(['/service']);
   }

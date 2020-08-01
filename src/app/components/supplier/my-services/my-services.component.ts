@@ -11,8 +11,8 @@ import { DeleteSupplierComponent} from './dialogs/delete-supplier/delete-supplie
 import { Apollo } from 'apollo-angular';
 import { InformationService } from '../../../services/information.service';
 import gql from 'graphql-tag';
-import { getServices, updateServiceSupplier } from '../../../querys';
-import { ResponseService } from '../../../types/types';
+import { getServices, updateServiceSupplier, getLocationsQuery } from '../../../querys';
+import { ResponseLocalizacion } from '../../../types/types';
 
 @Component({
   selector: 'app-my-services-component',
@@ -22,6 +22,7 @@ import { ResponseService } from '../../../types/types';
 export class MyServicesComponent implements OnInit{
   columns: string[] = ['sv_id', 'name', 'id', 'modify', 'tag', 'delete', 'supplier'];
 
+  locationData: any = [];
   currentUser;
   myServices = [];
 
@@ -34,6 +35,7 @@ export class MyServicesComponent implements OnInit{
 
   ngOnInit(): void {
     this.getUserServices();
+    this.getLocations(0, 0, true);
   }
 
 
@@ -69,6 +71,9 @@ export class MyServicesComponent implements OnInit{
 
   openNewServiceComponent() {
     this.dialog.open(NewServiceComponent, {
+      data: {
+        locations: this.locationData
+      },
       width: '800px'
     });
   }
@@ -155,5 +160,22 @@ export class MyServicesComponent implements OnInit{
     }).afterClosed().subscribe(res => {
       window.location.reload();
     })
+  }
+
+  public getLocations = (quantity: number, offset: number, visible: boolean) => {
+    this.apollo.query({
+      query: gql `${getLocationsQuery(quantity, offset, visible)}`
+    }).subscribe((result: any) => {
+      const response: ResponseLocalizacion = result.data.localizaciones;
+      if (response.code === 200) {
+        this.locationData = response.data;
+        console.log(this.locationData);
+      } else {
+        this.informationService.showMessage(response.message, 'warn');
+      }
+    }, error => {
+      this.informationService.showMessage('No se ha encontrado la localización', 'warn');
+      console.log(error);
+    });
   }
 }

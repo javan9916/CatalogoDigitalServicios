@@ -34,6 +34,8 @@ import { ManageTagsComponent } from './components/supplier/my-services/dialogs/m
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CrudAdminComponent } from './components/crud-admin/crud-admin.component';
 import { CreateAdminComponent } from './components/crud-admin/create/create-admin.component';
+import { DeleteSupplierComponent } from './components/supplier/my-services/dialogs/delete-supplier/delete-supplier.component';
+import { ServicesComponent } from './components/services/services.component';
 
 // Material
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -54,6 +56,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 // Modules needed for GraphQL
 import { HttpClientModule } from '@angular/common/http';
@@ -62,7 +66,7 @@ import { HttpLink, HttpLinkModule } from 'apollo-angular-link-http';
 import { InformationService } from './services/information.service';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { LayoutModule } from '@angular/cdk/layout';
-import { DeleteSupplierComponent } from './components/supplier/my-services/dialogs/delete-supplier/delete-supplier.component';
+
 
 
 @NgModule({
@@ -97,6 +101,7 @@ import { DeleteSupplierComponent } from './components/supplier/my-services/dialo
     DeleteSupplierComponent,
     CrudAdminComponent,
     CreateAdminComponent,
+    ServicesComponent,
   ],
   imports: [
     BrowserModule,
@@ -121,7 +126,9 @@ import { DeleteSupplierComponent } from './components/supplier/my-services/dialo
     MatPaginatorModule,
     MatButtonToggleModule,
     MatDialogModule,
+    MatAutocompleteModule,
     MatChipsModule,
+    MatCheckboxModule,
     MatTableModule,
     HttpClientModule,     // Necesario para poder usar HttpLinkModule
     ApolloModule,         // Modulo principal de Apollo

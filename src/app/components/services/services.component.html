@@ -1,0 +1,63 @@
+<mat-toolbar color="primary">
+    <button mat-flat-button class="mainButton" color="primary" (click)="onHomeClick()">
+        Catálogo Digital de Servicios
+    </button>
+    <span class="spacer"></span>
+    <ng-container *ngIf="currentUser != null">
+        <div class="name">
+            {{ currentUser.nombre }}
+        </div>
+    </ng-container>
+</mat-toolbar>
+
+<div class="row">
+    <div class="column">
+        <mat-card class="mat-card-checks">
+            <ul>
+                <li *ngFor="let tag of tags" class="check-list">
+                    <mat-checkbox [(ngModel)]="tag.state" color="primary">
+                        {{tag.name}}
+                    </mat-checkbox>
+                </li>
+            </ul>
+            <mat-card-title-group>
+                <div fxFlex></div>
+                <button mat-flat-button class="card-right" color="primary" (click)="getChecked()">
+                    Buscar
+                </button>
+            </mat-card-title-group>
+        </mat-card>
+
+        <h3 class="services">Servicios</h3>
+        <div *ngFor="let service of serviceData">
+            <mat-card>
+                <mat-card-title-group>
+                    <mat-card-title> {{ service.nombre }} </mat-card-title>
+                    <div fxFlex></div>
+                    <button mat-flat-button class="card-right" color="primary" (click)="goService(service)">Ver</button>
+                </mat-card-title-group>
+                <mat-card-content>
+                    Cédula Jurídica: {{ service.cedula_j }}
+                </mat-card-content>
+                <mat-chip-list>
+                    <mat-chip *ngFor="let tag of service.etiquetas" color="primary" selected>
+                        {{ tag.nombre }}
+                    </mat-chip>
+                </mat-chip-list>
+            </mat-card>
+        </div>
+    </div>
+
+    <div class="column">
+        <agm-map class="map" [latitude]="maplat" [longitude]="maplng" (mapClick)="onMapClicked($event)">
+            <div *ngFor="let location of locationData">
+                <agm-circle [latitude]="location.latitud" [longitude]="location.longitud" [radius]="getRadio(location)"
+                    fillColor="steelblue" fillOpacity="0.5" (circleClick)="onMapClicked($event)">
+                </agm-circle>
+                <div *ngFor="let service of location.catalogo">
+                    <agm-marker [latitude]="service.latitud" [longitude]="service.longitud"></agm-marker>
+                </div>
+            </div>
+        </agm-map>
+    </div>
+</div>

@@ -1,58 +1,66 @@
 <mat-toolbar class="toolbar" color="primary">
-    <button mat-flat-button class="mainButton" color="primary" (click)="onHomeClick()">
-      Catálogo Digital de Servicios
-    </button>
-    <span class="spacer"></span>
-    <ng-container *ngIf="(isLoggedIn()) && (currentUser != null) && (getUserType() == 0 )">
-      <button mat-flat-button class="button" color="primary" (click)="openRequestProviderComponent()">
-        <mat-icon>supervisor_account</mat-icon>
-        Solicitar ser proveedor
+  <button mat-flat-button class="mainButton" color="primary" (click)="onHomeClick()">
+    Catálogo Digital de Servicios
+  </button>
+  <span class="spacer"></span>
+  <ng-container *ngIf="currentUser != null">
+    <a routerLink="/services">
+      <button mat-flat-button class="button" color="primary">
+        <mat-icon>store</mat-icon>
+        Servicios
       </button>
-    </ng-container>
-    <a routerLink="/login">
-      <ng-container *ngIf="!isLoggedIn()">
-        <button mat-flat-button class="button" color="primary">
-          <mat-icon>person</mat-icon>
-          Login
-        </button>
-      </ng-container>
     </a>
+  </ng-container>
+  <ng-container *ngIf="(isLoggedIn()) && (currentUser != null) && (getUserType() == 0 )">
+    <button mat-flat-button class="button" color="primary" (click)="openRequestProviderComponent()">
+      <mat-icon>supervisor_account</mat-icon>
+      Solicitar ser proveedor
+    </button>
+  </ng-container>
+  <a routerLink="/login">
     <ng-container *ngIf="!isLoggedIn()">
-      <a routerLink="/signup">
-        <button mat-flat-button class="button" color="primary">
-          <mat-icon>person_add</mat-icon>
-          Registro
-        </button>
-      </a>
-    </ng-container>
-    <ng-container *ngIf="(isLoggedIn()) && (currentUser != null) && (getUserType() == 2 || getUserType() == 0)">
-      <a routerLink="/supplier/services">
-        <button mat-flat-button class="button" color="primary">
-          <mat-icon>account_circle</mat-icon>
-          {{ currentUser.nombre }}
-        </button>
-      </a>
-    </ng-container>
-    <ng-container *ngIf="(isLoggedIn()) && (currentUser != null) && (getUserType() == 1)">
-      <a routerLink="/admin/crud_location">
-        <button mat-flat-button class="button" color="primary">
-          <mat-icon>account_circle</mat-icon>
-          {{ currentUser.nombre }}
-        </button>
-      </a>
-    </ng-container>
-<!--  <ng-container *ngIf="(isLoggedIn()) && (currentUser != null) && (getUserType() == 0)">-->
-<!--    <button mat-flat-button class="button" color="primary">-->
-<!--      <mat-icon>account_circle</mat-icon>-->
-<!--      {{ currentUser.nombre }}-->
-<!--    </button>-->
-<!--  </ng-container>-->
-    <ng-container *ngIf="isLoggedIn()">
-      <button mat-flat-button class="button" color="primary" (click)="logout()">
-        <mat-icon>input</mat-icon>
-        Salir
+      <button mat-flat-button class="button" color="primary">
+        <mat-icon>person</mat-icon>
+        Login
       </button>
     </ng-container>
+  </a>
+  <ng-container *ngIf="!isLoggedIn()">
+    <a routerLink="/signup">
+      <button mat-flat-button class="button" color="primary">
+        <mat-icon>person_add</mat-icon>
+        Registro
+      </button>
+    </a>
+  </ng-container>
+  <ng-container *ngIf="(isLoggedIn()) && (currentUser != null) && (getUserType() == 2 || getUserType() == 0)">
+    <a routerLink="/supplier/services">
+      <button mat-flat-button class="button" color="primary">
+        <mat-icon>account_circle</mat-icon>
+        {{ currentUser.nombre }}
+      </button>
+    </a>
+  </ng-container>
+  <ng-container *ngIf="(isLoggedIn()) && (currentUser != null) && (getUserType() == 1)">
+    <a routerLink="/admin/crud_location">
+      <button mat-flat-button class="button" color="primary">
+        <mat-icon>account_circle</mat-icon>
+        {{ currentUser.nombre }}
+      </button>
+    </a>
+  </ng-container>
+  <!--  <ng-container *ngIf="(isLoggedIn()) && (currentUser != null) && (getUserType() == 0)">-->
+  <!--    <button mat-flat-button class="button" color="primary">-->
+  <!--      <mat-icon>account_circle</mat-icon>-->
+  <!--      {{ currentUser.nombre }}-->
+  <!--    </button>-->
+  <!--  </ng-container>-->
+  <ng-container *ngIf="isLoggedIn()">
+    <button mat-flat-button class="button" color="primary" (click)="logout()">
+      <mat-icon>input</mat-icon>
+      Salir
+    </button>
+  </ng-container>
 </mat-toolbar>
 
 <div class="container">

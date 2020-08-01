@@ -31,18 +31,18 @@ export class UpdateLocationComponent implements OnInit {
     private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.getLocations(this.pageSize, (this.pageSize * this.pageIndex));
+    this.getLocations(this.pageSize, (this.pageSize * this.pageIndex), true);
   }
 
   onPageChanged(event) {
-    this.getLocations(event.pageSize, (event.pageSize * event.pageIndex));
+    this.getLocations(event.pageSize, (event.pageSize * event.pageIndex), true);
   }
 
-  public getLocations = (quantity: number, offset: number) => {
+  public getLocations = (quantity: number, offset: number, visible:true) => {
     this.location_data = [];
 
     this.apollo.query({
-      query: gql `${getLocationsQuery(quantity, offset)}`,
+      query: gql `${getLocationsQuery(quantity, offset, visible)}`,
     }).subscribe( (result: any) => {
       const response: ResponseLocalizacion = result.data.localizaciones;
       if (response.code === 200) {
@@ -120,7 +120,7 @@ export class UpdateLocationComponent implements OnInit {
       const response: ResponseLocalizacion = result.data.eliminarLocalizacion;
       console.log(response);
       if (response.code === 200) {
-        this.getLocations(this.pageSize, this.pageIndex);
+        this.getLocations(this.pageSize, this.pageIndex, true);
         this.informationService.showMessage(response.message, 'success');
       } else {
         this.informationService.showMessage(response.message, 'warn');
@@ -138,7 +138,7 @@ export class UpdateLocationComponent implements OnInit {
       const response = result.data;
       console.log(response);
       if (response.code === 200) {
-        this.getLocations(this.pageSize, this.pageIndex);
+        this.getLocations(this.pageSize, this.pageIndex, true);
         this.informationService.showMessage(response.message, 'success');
       } else if (response.code === 400) {
         this.informationService.showMessage(response.message, 'warn');

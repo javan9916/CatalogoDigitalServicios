@@ -1,9 +1,9 @@
-import {Component} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {InformationService} from '../../../../../services/information.service';
 import {Apollo} from 'apollo-angular';
 import gql from 'graphql-tag';
-import {MatDialogRef} from '@angular/material/dialog';
-import {getCreateRequestService} from '../../../../../querys';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { getCreateRequestService, getLocationsQuery } from '../../../../../querys';
 
 @Component({
   selector: 'app-new-service-dialog',
@@ -11,6 +11,8 @@ import {getCreateRequestService} from '../../../../../querys';
   styleUrls: ['new-service.component.css']
 })
 export class NewServiceComponent {
+  locationData: any = [];
+
   currentUser;
   id_solicitante;
   nombre;
@@ -23,11 +25,13 @@ export class NewServiceComponent {
   markerlng;
   constructor(private informationService: InformationService,
               private apollo: Apollo,
-              private dialogRef: MatDialogRef<NewServiceComponent>) {
+              private dialogRef: MatDialogRef<NewServiceComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any) {
     // console.log(sessionStorage.getItem('user'));
     this.currentUser = JSON.parse(sessionStorage.getItem('user'));
     this.id_solicitante = this.currentUser.id_usuario;
-    console.log(this.id_solicitante)
+    this.locationData = data.locations;
+    console.log(this.id_solicitante);
   }
 
   onMapClicked(event) {
@@ -69,6 +73,11 @@ export class NewServiceComponent {
     }, error => {
       this.informationService.showMessage('Ha ocurrido un error', 'error');
     })
+  }
+
+  getRadio(location) {
+    var radio = Math.round(location.radio * 111000);
+    return radio;
   }
 
 }

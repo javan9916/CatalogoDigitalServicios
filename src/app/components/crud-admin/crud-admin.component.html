@@ -24,7 +24,7 @@
     <ng-container matColumnDef="opciones">
       <th mat-header-cell *matHeaderCellDef> Opciones </th>
       <td mat-cell *matCellDef="let usuario">
-        <button mat-icon-button>
+        <button mat-icon-button (click)="openUpdateUser(usuario)">
           <mat-icon style="color: orange">edit</mat-icon>
         </button>
         <button mat-icon-button (click)="deleteUser(usuario.id_usuario)">

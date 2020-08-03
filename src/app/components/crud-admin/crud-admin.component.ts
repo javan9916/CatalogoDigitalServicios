@@ -5,6 +5,7 @@ import {getDeleteUser, getUsersByType} from '../../querys';
 import {MatDialog} from '@angular/material/dialog';
 import {CreateAdminComponent} from './create/create-admin.component';
 import {InformationService} from '../../services/information.service';
+import {UpdateAdminComponent} from './update/update-admin.component';
 
 
 @Component({
@@ -47,6 +48,17 @@ export class CrudAdminComponent implements OnInit {
         window.location.reload();
       }
     });
+  }
+
+  openUpdateUser(element) {
+    this.dialog.open(UpdateAdminComponent, {
+      width: '650px',
+      data: element
+    }).afterClosed().subscribe(result => {
+      if (result === 'reload') {
+        window.location.reload();
+      }
+    })
   }
 
   deleteUser(id) {

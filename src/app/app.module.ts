@@ -34,6 +34,7 @@ import { ManageTagsComponent } from './components/supplier/my-services/dialogs/m
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CrudAdminComponent } from './components/crud-admin/crud-admin.component';
 import { CreateAdminComponent } from './components/crud-admin/create/create-admin.component';
+import { UpdateAdminComponent } from './components/crud-admin/update/update-admin.component';
 
 // Material
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -97,6 +98,7 @@ import { DeleteSupplierComponent } from './components/supplier/my-services/dialo
     DeleteSupplierComponent,
     CrudAdminComponent,
     CreateAdminComponent,
+    UpdateAdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -135,6 +137,7 @@ import { DeleteSupplierComponent } from './components/supplier/my-services/dialo
     ModifyServiceComponent,
     ManageTagsComponent,
     CreateAdminComponent,
+    UpdateAdminComponent,
   ],
   providers: [InformationService],
   bootstrap: [AppComponent]

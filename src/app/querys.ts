@@ -676,6 +676,9 @@ export function getUsersByType(quantity: number, offset: number, tipo: number) {
       data {
         nombre
         id_usuario
+        telefono
+        correo
+        cedula
       }
       code
       message
@@ -707,6 +710,14 @@ export function getDeleteUser() {
   }`
 }
 
+export function getUpdateUser() {
+  return `mutation ModificarUsuario($Input:InputUpdateUsuario !) {
+    modificarUsuario(input:$Input){
+      code
+      message
+    }
+  }`
+}
 
 
 

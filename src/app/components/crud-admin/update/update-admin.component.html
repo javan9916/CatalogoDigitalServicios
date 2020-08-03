@@ -1,0 +1,39 @@
+<h1 mat-dialog-title>Modificar Administrador</h1>
+<!--<p class="subtitle">¡Todos los campos son obligatorios!</p>-->
+
+<mat-divider></mat-divider>
+
+<div mat-dialog-content>
+  <form [formGroup]="updateAdmin" autocomplete="off">
+
+
+    <mat-form-field appearance="outline" class="form-field-name">
+      <mat-label>Nombre Completo</mat-label>
+      <input matInput type="text" placeholder="Nombre Completo" formControlName="name" required [(ngModel)]="name">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field-id">
+      <mat-label>Cédula</mat-label>
+      <input matInput type="text" placeholder="Cédula" formControlName="id" required [(ngModel)]="id">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field-email">
+      <mat-label>Correo Electrónico</mat-label>
+      <input matInput type="text" placeholder="Correo Electrónico" formControlName="email" required [(ngModel)]="email">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field-phone">
+      <mat-label>Teléfono</mat-label>
+      <input matInput type="text" placeholder="Teléfono" formControlName="phone" required [(ngModel)]="phone">
+    </mat-form-field>
+
+  </form>
+</div>
+
+<mat-divider></mat-divider>
+
+<div mat-dialog-actions>
+  <span class="spacer"></span>
+  <button mat-raised-button color="primary" [disabled]="!updateAdmin.valid" (click)="onSubmit()">Modificar</button>
+  <button mat-raised-button mat-dialog-close color="warn">Cerrar</button>
+</div>

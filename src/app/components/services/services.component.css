@@ -1,0 +1,52 @@
+.mainButton {
+    font-size: 20px;
+}
+  
+.map {
+    height: 100%;
+    width: 100%;
+}
+
+.chip-list {
+    width: 100%;
+  }
+  
+.spacer {
+    flex: 1 1 auto;
+}
+
+.button-spacer {
+    flex-grow: 1;
+}
+  
+h3 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #333;
+    font-size: 30px;
+    text-transform: uppercase;
+}
+
+mat-card {
+    margin: 2%;
+}
+  
+.services {
+    padding: 2%;
+}
+  
+.row {
+    display: flex;
+    height: 100%;
+}
+  
+.column {
+    flex: 50%;
+}
+
+.check-list {
+    display: inline-block;
+    margin-right: 2%;
+    padding: 0%;
+}
+  

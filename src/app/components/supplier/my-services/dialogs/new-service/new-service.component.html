@@ -7,6 +7,12 @@
   <div class="map-container">
     <agm-map class="map" [latitude]="maplat" [longitude]="maplng" (mapClick)="onMapClicked($event)">
       <agm-marker [latitude]="markerlat" [longitude]="markerlng" *ngIf="onChosen"></agm-marker>
+
+      <div *ngFor="let location of locationData">
+        <agm-circle [latitude]="location.latitud" [longitude]="location.longitud" [radius]="getRadio(location)"
+           fillColor="steelblue" fillOpacity="0.5">
+        </agm-circle>
+      </div>
     </agm-map>
   </div>
 

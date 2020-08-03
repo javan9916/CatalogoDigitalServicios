@@ -62,18 +62,32 @@ export function getLocationQuery() {
   }`;
 }
 
-export function getLocationsQuery(quantity: number, offset: number) {
-  return `query localizaciones{
-    localizaciones(quantity: ${quantity} offset: ${offset}){
+export function getLocationsQuery(quantity: number, offset: number, visible: boolean) {
+  return `query {
+    localizaciones (quantity: ${quantity} offset: ${offset} visible: ${visible}){
       count
-      data{
+      data {
         id_localizacion
         nombre
-        geofence
-        visible
         latitud
         longitud
         radio
+        catalogo {
+          id_servicio
+          cedula_j
+          nombre
+          descripcion
+          latitud
+          longitud
+          etiquetas {
+            id_etiqueta
+            nombre
+          }
+          encargados {
+            id_usuario
+            nombre
+          }
+        }
       }
       code
       message
@@ -596,6 +610,96 @@ export function getServices() {
   }`
 }
 
+export function getServicesByTags(quantity: number, offset: number, etiquetas: any) {
+  return `query {
+    servicios (quantity: ${quantity} offset: ${offset} etiquetas: [${etiquetas}]) {
+      count
+      data{
+        id_servicio
+        nombre
+        cedula_j
+        localizacion {
+          id_localizacion
+          nombre
+        }
+        latitud
+        longitud
+        ubicacion
+        encargados {
+          id_usuario
+          nombre
+        }
+        etiquetas {
+          id_etiqueta
+          nombre
+        }
+      }
+      code
+      message
+    }
+  }`
+}
+
+export function getServicesByLocation(quantity: number, offset: number, latitud: number, longitud: number, radio: number) {
+  return `query {
+    servicios (quantity: ${quantity} offset: ${offset} latitud: ${latitud} longitud: ${longitud} radio: ${radio}) {
+      count
+      data{
+        id_servicio
+        nombre
+        cedula_j
+        localizacion {
+          id_localizacion
+          nombre
+        }
+        latitud
+        longitud
+        ubicacion
+        encargados {
+          id_usuario
+          nombre
+        }
+        etiquetas {
+          id_etiqueta
+          nombre
+        }
+      }
+      code
+      message
+    }
+  }`
+}
+
+export function getAllServices(quantity: number, offset: number) {
+  return `query {
+    servicios (quantity: ${quantity} offset: ${offset}) {
+      count
+      data{
+        id_servicio
+        nombre
+        cedula_j
+        localizacion {
+          id_localizacion
+          nombre
+        }
+        latitud
+        longitud
+        ubicacion
+        encargados {
+          id_usuario
+          nombre
+        }
+        etiquetas {
+          id_etiqueta
+          nombre
+        }
+      }
+      code
+      message
+    }
+  }`
+}
+
 export function getAllTags() {
   return `query Etiquetas($Quantity:Int! $Offset:Int! $Nombre:String) {
     etiquetas(quantity:$Quantity offset:$Offset nombre:$Nombre) {
@@ -718,6 +822,5 @@ export function getUpdateUser() {
     }
   }`
 }
-
 
 

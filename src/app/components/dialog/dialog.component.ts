@@ -42,6 +42,7 @@ export class DialogComponent implements OnInit {
       this.locationId = data.id;
       this.locationName = data.name;
       this.locationVisible = data.visible;
+      console.log(this.locationVisible);
       this.locationLat = data.lat;
       this.locationLng = data.lng;
       this.locationMarkerLat = data.lat;

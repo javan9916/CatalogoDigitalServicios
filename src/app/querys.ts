@@ -62,6 +62,40 @@ export function getLocationQuery() {
   }`;
 }
 
+export function getAllLocationsQuery(quantity: number, offset: number) {
+  return `query {
+    localizaciones (quantity: ${quantity} offset: ${offset}){
+      count
+      data {
+        id_localizacion
+        nombre
+        latitud
+        longitud
+        radio
+        visible
+        catalogo {
+          id_servicio
+          cedula_j
+          nombre
+          descripcion
+          latitud
+          longitud
+          etiquetas {
+            id_etiqueta
+            nombre
+          }
+          encargados {
+            id_usuario
+            nombre
+          }
+        }
+      }
+      code
+      message
+    }
+  }`;
+}
+
 export function getLocationsQuery(quantity: number, offset: number, visible: boolean) {
   return `query {
     localizaciones (quantity: ${quantity} offset: ${offset} visible: ${visible}){
@@ -72,6 +106,7 @@ export function getLocationsQuery(quantity: number, offset: number, visible: boo
         latitud
         longitud
         radio
+        visible
         catalogo {
           id_servicio
           cedula_j

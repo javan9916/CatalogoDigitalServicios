@@ -108,7 +108,6 @@ export class UpdateLocationComponent implements OnInit {
           }
           console.log(inputLocalizacion);
           this.updateLocation(inputLocalizacion);
-          window.location.reload();
         }
       }
     })

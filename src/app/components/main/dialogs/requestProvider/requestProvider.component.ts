@@ -19,11 +19,12 @@ export class RequestProviderComponent {
   constructor(private informationService: InformationService,
               private apollo: Apollo,
               private dialogRef: MatDialogRef<RequestProviderComponent>) {
-    this.id_solicitante = this.currentUser.id_usuario
+
   }
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(window.sessionStorage.getItem('user'));
+    this.id_solicitante = this.currentUser.id_usuario
     console.log(this.currentUser);
   }
 

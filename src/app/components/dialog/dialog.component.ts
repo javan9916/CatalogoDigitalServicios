@@ -38,7 +38,8 @@ export class DialogComponent implements OnInit {
       this.locationId = data.id;
       this.locationName = data.name;
       this.index = data.index;
-    } else if (data.action == 'Editar') {
+      this.localAction = 'Eliminar'
+    } else if (this.action == 'Editar') {
       this.locationId = data.id;
       this.locationName = data.name;
       this.locationVisible = data.visible;
@@ -50,17 +51,17 @@ export class DialogComponent implements OnInit {
       this.locationRadius = Math.round(data.radius * 111000);
       this.locationCircle = this.locationRadius;
       this.index = data.index;
-    } else if (data.action == 'Editar Etiqueta') {
+    } else if (this.action == 'Editar Etiqueta') {
       this.localAction = 'Etiqueta';
       this.tagId = data.id;
       this.tagName = data.tag;
       this.index = data.index;
-    } else if (data.action == 'Eliminar Etiqueta') {
+    } else if (this.action == 'Eliminar Etiqueta') {
       this.localAction = 'Etiqueta';
       this.tagId = data.id;
       this.tagName = data.tag;
       this.index = data.index;
-    } else if (data.action == 'Nueva Etiqueta') {
+    } else if (this.action == 'Nueva Etiqueta') {
       this.localAction = 'NEtiqueta';
     }
   }
@@ -108,7 +109,7 @@ export class DialogComponent implements OnInit {
   }
 
   save() {
-    if (this.localAction == 'Etiqueta' || this.localAction == 'NEtiqueta') {
+    if (this.localAction == 'Etiqueta' || this.localAction == 'NEtiqueta' || this.localAction == 'Eliminar') {
       this.dialogRef.close(this.dialogForm.value);
     } else {
       this.dialogForm.controls['lat'].setValue(this.locationMarkerLat);

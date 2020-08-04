@@ -108,6 +108,7 @@ export class UpdateLocationComponent implements OnInit {
           }
           console.log(inputLocalizacion);
           this.updateLocation(inputLocalizacion);
+          window.location.reload();
         }
       }
     })
@@ -122,6 +123,7 @@ export class UpdateLocationComponent implements OnInit {
       if (response.code === 200) {
         this.getLocations(this.pageSize, this.pageIndex);
         this.informationService.showMessage(response.message, 'success');
+        window.location.reload();
       } else {
         this.informationService.showMessage(response.message, 'warn');
       }
@@ -140,6 +142,7 @@ export class UpdateLocationComponent implements OnInit {
       if (response.code === 200) {
         this.getLocations(this.pageSize, this.pageIndex);
         this.informationService.showMessage(response.message, 'success');
+        window.location.reload();
       } else if (response.code === 400) {
         this.informationService.showMessage(response.message, 'warn');
       }

@@ -23,11 +23,11 @@ export class CreateLocationComponent implements OnInit {
   markerlng = 0;
   circle: number = 0;
   radius: number;
-  
+
   constructor(private formBuilder: FormBuilder, private apollo: Apollo,
     private informationService: InformationService) { }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.locationForm = this.formBuilder.group({
       name: ['', Validators.required],
       visible: ['', Validators.required],
@@ -41,7 +41,7 @@ export class CreateLocationComponent implements OnInit {
     this.onChosen = true;
   }
 
-  onSubmit() { 
+  onSubmit() {
     if (this.locationForm.valid) {
       const inputLocalizacion: InputLocalizacion = {
         nombre: this.locationForm.get('name').value,
@@ -63,6 +63,7 @@ export class CreateLocationComponent implements OnInit {
       const response = result.data.agregarLocalizacion;
       if (response.code === 200) {
         this.informationService.showMessage(response.message, 'success');
+        window.location.reload();
       } else if (response.code === 400) {
         this.informationService.showMessage(response.message, 'warn');
       }
@@ -73,7 +74,7 @@ export class CreateLocationComponent implements OnInit {
 
   onKeyup() {
     if (this.onChosen) {
-      this.circle = this.radius; 
+      this.circle = this.radius;
     }
   }
 

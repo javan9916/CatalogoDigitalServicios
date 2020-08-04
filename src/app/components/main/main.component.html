@@ -33,7 +33,7 @@
       </button>
     </a>
   </ng-container>
-  <ng-container *ngIf="(isLoggedIn()) && (currentUser != null) && (getUserType() == 2 || getUserType() == 0)">
+  <ng-container *ngIf="(isLoggedIn()) && (currentUser != null) && (getUserType() == 2)">
     <a routerLink="/supplier/services">
       <button mat-flat-button class="button" color="primary">
         <mat-icon>account_circle</mat-icon>

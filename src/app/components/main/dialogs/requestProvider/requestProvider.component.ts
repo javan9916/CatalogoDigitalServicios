@@ -24,6 +24,7 @@ export class RequestProviderComponent {
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(window.sessionStorage.getItem('user'));
+    console.log(this.currentUser);
   }
 
   sendRequest() {

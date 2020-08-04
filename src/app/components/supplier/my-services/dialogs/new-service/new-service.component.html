@@ -10,7 +10,7 @@
 
       <div *ngFor="let location of locationData">
         <agm-circle [latitude]="location.latitud" [longitude]="location.longitud" [radius]="getRadio(location)"
-           fillColor="steelblue" fillOpacity="0.5">
+           fillColor="steelblue" fillOpacity="0.5" (circleClick)="onMapClicked($event)">
         </agm-circle>
       </div>
     </agm-map>
